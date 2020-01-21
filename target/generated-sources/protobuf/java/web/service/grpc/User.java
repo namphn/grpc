@@ -15,15 +15,15 @@ public final class User {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_web_service_grpc_CreateUserRequest_descriptor;
+    internal_static_CreateUserRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_web_service_grpc_CreateUserRequest_fieldAccessorTable;
+      internal_static_CreateUserRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_web_service_grpc_CreateUserResponse_descriptor;
+    internal_static_CreateUserResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_web_service_grpc_CreateUserResponse_fieldAccessorTable;
+      internal_static_CreateUserResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -33,30 +33,38 @@ public final class User {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nuser.proto\022\020web.service.grpc\"N\n\021Create" +
-      "UserRequest\022\021\n\tuserEmail\030\001 \001(\t\022\020\n\010userNa" +
-      "me\030\002 \001(\t\022\024\n\014userPassword\030\003 \001(\t\"7\n\022Create" +
-      "UserResponse\022\016\n\006userId\030\001 \001(\t\022\021\n\tuserEmai" +
-      "l\030\002 \001(\t2l\n\021CreateUserService\022W\n\ncreateUs" +
-      "er\022#.web.service.grpc.CreateUserRequest\032" +
-      "$.web.service.grpc.CreateUserResponseB\002P" +
-      "\001b\006proto3"
+      "\n\nuser.proto\"|\n\021CreateUserRequest\022\021\n\tuse" +
+      "rEmail\030\001 \001(\t\022\020\n\010userName\030\002 \001(\t\022\024\n\014userPa" +
+      "ssword\030\003 \001(\t\022\023\n\013userAddress\030\004 \001(\t\022\027\n\017use" +
+      "rPhoneNumber\030\005 \001(\t\"7\n\022CreateUserResponse" +
+      "\022\016\n\006userId\030\001 \001(\t\022\021\n\tuserEmail\030\002 \001(\t2D\n\013U" +
+      "serService\0225\n\ncreateUser\022\022.CreateUserReq" +
+      "uest\032\023.CreateUserResponseB\027\n\020web.service" +
+      ".grpcP\001\210\001\001b\006proto3"
     };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
+    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
+    com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
-    internal_static_web_service_grpc_CreateUserRequest_descriptor =
+        }, assigner);
+    internal_static_CreateUserRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_web_service_grpc_CreateUserRequest_fieldAccessorTable = new
+    internal_static_CreateUserRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_web_service_grpc_CreateUserRequest_descriptor,
-        new java.lang.String[] { "UserEmail", "UserName", "UserPassword", });
-    internal_static_web_service_grpc_CreateUserResponse_descriptor =
+        internal_static_CreateUserRequest_descriptor,
+        new java.lang.String[] { "UserEmail", "UserName", "UserPassword", "UserAddress", "UserPhoneNumber", });
+    internal_static_CreateUserResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_web_service_grpc_CreateUserResponse_fieldAccessorTable = new
+    internal_static_CreateUserResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_web_service_grpc_CreateUserResponse_descriptor,
+        internal_static_CreateUserResponse_descriptor,
         new java.lang.String[] { "UserId", "UserEmail", });
   }
 
