@@ -3,17 +3,47 @@ option java_multiple_files = true;
 option java_generic_services = true;
 option java_package = "web.service.grpc";
 
-message CreateUserRequest{
-    string userEmail = 1;
-    string userName = 2;
-    string userPassword = 3;
-    string userAddress = 4;
-    string userPhoneNumber = 5;
+message RegistrationRequestGrpc{
+    string email = 1;
+    string password = 3;
 }
-message CreateUserResponse{
-    string userId = 1;
-    string userEmail = 2;
+message RegistrationResponseGrpc{
+    string email = 1;
+    string password = 2;
+}
+message ConfirmEmailRequest{
+    string email = 1;
+}
+message ConfirmEmailResponse{
+    string status = 1;
+}
+message PasswordResetRequest{
+    string email = 1;
+}
+message PasswordResetResponse{
+    bool sent = 1;
+}
+message RegistrationInformationRequest{
+    string email = 1;
+    string userName = 2;
+    string phone = 3;
+}
+message RegistrationInformationResponse{
+    bool status = 1;
+}
+message LoginRequest{
+    string email = 1;
+    string password = 2;
+}
+message LoginResponse{
+    string status = 1;
+    string token = 2;
 }
 service UserService{
-    rpc createUser (CreateUserRequest) returns (CreateUserResponse);
+    rpc Registration (RegistrationRequestGrpc) returns (RegistrationResponseGrpc);
+    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc VerificationTokenRegistration (ConfirmEmailRequest) returns (ConfirmEmailResponse);
+    rpc PasswordForgot(PasswordResetRequest) returns (PasswordResetResponse);
+    rpc RegistrationInformation(RegistrationInformationRequest) returns (RegistrationInformationResponse);
 }
+
