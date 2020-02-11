@@ -13,10 +13,11 @@ message RegistrationResponseGrpc{
     string status = 3;
 }
 message ConfirmEmailRequest{
-    string email = 1;
+    string token = 1;
 }
 message ConfirmEmailResponse{
     string status = 1;
+    string email = 2;
 }
 message PasswordResetRequest{
     string email = 1;
@@ -41,11 +42,46 @@ message LoginResponse{
     string status = 1;
     string token = 2;
 }
+
+message NewPasswordRequest{
+    string newPassword = 1;
+    string newPasswordConfirm = 2;
+}
+
+message NewPasswordResponse{
+    string email = 1;
+    string status = 2;
+}
+
+message VerificationResetPasswordTokenRequest{
+    string token = 1;
+}
+message VerificationResetPasswordTokenResponse{
+    string email = 1;
+    string status = 2;
+}
 service UserService{
+
+    // create a new account, save new email, password and send verification email
     rpc Registration (RegistrationRequestGrpc) returns (RegistrationResponseGrpc);
+
+    // login account
     rpc Login (LoginRequest) returns (LoginResponse);
+
+    // Verify email
     rpc VerificationTokenRegistration (ConfirmEmailRequest) returns (ConfirmEmailResponse);
+
+    // send reset password email
     rpc PasswordForgot(PasswordResetRequest) returns (PasswordResetResponse);
-    rpc RegistrationInformation(RegistrationInformationRequest) returns (RegistrationInformationResponse);
+
+    // save new password
+    rpc PasswordReset (NewPasswordRequest) returns (NewPasswordResponse);
+
+    // register account's information
+    rpc RegistrationInformation (RegistrationInformationRequest) returns (RegistrationInformationResponse);
+
+    // verify reset password token
+    rpc VerificationResetPasswordToken (VerificationResetPasswordTokenRequest)
+        returns (VerificationResetPasswordTokenResponse);
 }
 
