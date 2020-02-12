@@ -32,7 +32,7 @@ message RegistrationInformationRequest{
     string phone = 3;
 }
 message RegistrationInformationResponse{
-    bool status = 1;
+    string status = 1;
 }
 message LoginRequest{
     string email = 1;
@@ -44,8 +44,9 @@ message LoginResponse{
 }
 
 message NewPasswordRequest{
-    string newPassword = 1;
-    string newPasswordConfirm = 2;
+    string token = 1;
+    string newPassword = 2;
+    string newPasswordConfirm = 3;
 }
 
 message NewPasswordResponse{
