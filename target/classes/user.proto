@@ -1,7 +1,7 @@
 syntax = "proto3";
 option java_multiple_files = true;
 option java_generic_services = true;
-option java_package = "web.service.grpc";
+option java_package = "web.service.grpc.user";
 
 message RegistrationRequestGrpc{
     string email = 1;
@@ -61,6 +61,23 @@ message VerificationResetPasswordTokenResponse{
     string email = 1;
     string status = 2;
 }
+
+message GetEmailRequest {
+    string token = 1;
+}
+
+message GetEmailResponse {
+    string email = 1;
+}
+
+message ValidateTokenRequest {
+    string email = 1;
+    string token = 2;
+}
+
+message ValidateTokenResponse{
+    bool status = 1;
+}
 service UserService{
 
     // create a new account, save new email, password and send verification email
@@ -84,5 +101,13 @@ service UserService{
     // verify reset password token
     rpc VerificationResetPasswordToken (VerificationResetPasswordTokenRequest)
         returns (VerificationResetPasswordTokenResponse);
+
+    // Grpc Api cotroller
+
+    // filter controller call to user service
+    rpc GetEmailFromToken (GetEmailRequest) returns (GetEmailResponse);
+
+    //validate toke
+    rpc ValidateToken (ValidateTokenRequest) returns (ValidateTokenResponse);
 }
 
