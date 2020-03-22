@@ -8,9 +8,14 @@ public interface PostOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 id = 1;</code>
+   * <code>string id = 1;</code>
    */
-  long getId();
+  java.lang.String getId();
+  /**
+   * <code>string id = 1;</code>
+   */
+  com.google.protobuf.ByteString
+      getIdBytes();
 
   /**
    * <code>int64 userId = 2;</code>
@@ -52,28 +57,23 @@ public interface PostOrBuilder extends
       int index);
 
   /**
-   * <code>repeated .Like likes = 5;</code>
+   * <code>repeated string likes = 5;</code>
    */
-  java.util.List<web.service.grpc.newsfeed.Like> 
+  java.util.List<java.lang.String>
       getLikesList();
   /**
-   * <code>repeated .Like likes = 5;</code>
-   */
-  web.service.grpc.newsfeed.Like getLikes(int index);
-  /**
-   * <code>repeated .Like likes = 5;</code>
+   * <code>repeated string likes = 5;</code>
    */
   int getLikesCount();
   /**
-   * <code>repeated .Like likes = 5;</code>
+   * <code>repeated string likes = 5;</code>
    */
-  java.util.List<? extends web.service.grpc.newsfeed.LikeOrBuilder> 
-      getLikesOrBuilderList();
+  java.lang.String getLikes(int index);
   /**
-   * <code>repeated .Like likes = 5;</code>
+   * <code>repeated string likes = 5;</code>
    */
-  web.service.grpc.newsfeed.LikeOrBuilder getLikesOrBuilder(
-      int index);
+  com.google.protobuf.ByteString
+      getLikesBytes(int index);
 
   /**
    * <code>repeated .Share shares = 6;</code>
@@ -100,26 +100,40 @@ public interface PostOrBuilder extends
       int index);
 
   /**
-   * <code>repeated .Tag tags = 7;</code>
+   * <code>repeated string tags = 7;</code>
    */
-  java.util.List<web.service.grpc.newsfeed.Tag> 
+  java.util.List<java.lang.String>
       getTagsList();
   /**
-   * <code>repeated .Tag tags = 7;</code>
-   */
-  web.service.grpc.newsfeed.Tag getTags(int index);
-  /**
-   * <code>repeated .Tag tags = 7;</code>
+   * <code>repeated string tags = 7;</code>
    */
   int getTagsCount();
   /**
-   * <code>repeated .Tag tags = 7;</code>
+   * <code>repeated string tags = 7;</code>
    */
-  java.util.List<? extends web.service.grpc.newsfeed.TagOrBuilder> 
-      getTagsOrBuilderList();
+  java.lang.String getTags(int index);
   /**
-   * <code>repeated .Tag tags = 7;</code>
+   * <code>repeated string tags = 7;</code>
    */
-  web.service.grpc.newsfeed.TagOrBuilder getTagsOrBuilder(
-      int index);
+  com.google.protobuf.ByteString
+      getTagsBytes(int index);
+
+  /**
+   * <code>repeated string images = 8;</code>
+   */
+  java.util.List<java.lang.String>
+      getImagesList();
+  /**
+   * <code>repeated string images = 8;</code>
+   */
+  int getImagesCount();
+  /**
+   * <code>repeated string images = 8;</code>
+   */
+  java.lang.String getImages(int index);
+  /**
+   * <code>repeated string images = 8;</code>
+   */
+  com.google.protobuf.ByteString
+      getImagesBytes(int index);
 }

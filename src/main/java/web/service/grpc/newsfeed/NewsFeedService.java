@@ -35,6 +35,30 @@ public  abstract class NewsFeedService
         web.service.grpc.newsfeed.LikeRequest request,
         com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.LikeResponse> done);
 
+    /**
+     * <code>rpc share(.ShareRequest) returns (.ShareResponse);</code>
+     */
+    public abstract void share(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.ShareRequest request,
+        com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.ShareResponse> done);
+
+    /**
+     * <code>rpc comment(.CommentRequest) returns (.CommentResponse);</code>
+     */
+    public abstract void comment(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.CommentRequest request,
+        com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.CommentResponse> done);
+
+    /**
+     * <code>rpc tag(.TagRequest) returns (.TagResponse);</code>
+     */
+    public abstract void tag(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.TagRequest request,
+        com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.TagResponse> done);
+
   }
 
   public static com.google.protobuf.Service newReflectiveService(
@@ -62,6 +86,30 @@ public  abstract class NewsFeedService
           web.service.grpc.newsfeed.LikeRequest request,
           com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.LikeResponse> done) {
         impl.like(controller, request, done);
+      }
+
+      @java.lang.Override
+      public  void share(
+          com.google.protobuf.RpcController controller,
+          web.service.grpc.newsfeed.ShareRequest request,
+          com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.ShareResponse> done) {
+        impl.share(controller, request, done);
+      }
+
+      @java.lang.Override
+      public  void comment(
+          com.google.protobuf.RpcController controller,
+          web.service.grpc.newsfeed.CommentRequest request,
+          com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.CommentResponse> done) {
+        impl.comment(controller, request, done);
+      }
+
+      @java.lang.Override
+      public  void tag(
+          com.google.protobuf.RpcController controller,
+          web.service.grpc.newsfeed.TagRequest request,
+          com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.TagResponse> done) {
+        impl.tag(controller, request, done);
       }
 
     };
@@ -92,6 +140,12 @@ public  abstract class NewsFeedService
             return impl.saveNewPost(controller, (web.service.grpc.newsfeed.Post)request);
           case 2:
             return impl.like(controller, (web.service.grpc.newsfeed.LikeRequest)request);
+          case 3:
+            return impl.share(controller, (web.service.grpc.newsfeed.ShareRequest)request);
+          case 4:
+            return impl.comment(controller, (web.service.grpc.newsfeed.CommentRequest)request);
+          case 5:
+            return impl.tag(controller, (web.service.grpc.newsfeed.TagRequest)request);
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -112,6 +166,12 @@ public  abstract class NewsFeedService
             return web.service.grpc.newsfeed.Post.getDefaultInstance();
           case 2:
             return web.service.grpc.newsfeed.LikeRequest.getDefaultInstance();
+          case 3:
+            return web.service.grpc.newsfeed.ShareRequest.getDefaultInstance();
+          case 4:
+            return web.service.grpc.newsfeed.CommentRequest.getDefaultInstance();
+          case 5:
+            return web.service.grpc.newsfeed.TagRequest.getDefaultInstance();
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -132,6 +192,12 @@ public  abstract class NewsFeedService
             return web.service.grpc.newsfeed.SaveNewPostResponse.getDefaultInstance();
           case 2:
             return web.service.grpc.newsfeed.LikeResponse.getDefaultInstance();
+          case 3:
+            return web.service.grpc.newsfeed.ShareResponse.getDefaultInstance();
+          case 4:
+            return web.service.grpc.newsfeed.CommentResponse.getDefaultInstance();
+          case 5:
+            return web.service.grpc.newsfeed.TagResponse.getDefaultInstance();
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -163,6 +229,30 @@ public  abstract class NewsFeedService
       com.google.protobuf.RpcController controller,
       web.service.grpc.newsfeed.LikeRequest request,
       com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.LikeResponse> done);
+
+  /**
+   * <code>rpc share(.ShareRequest) returns (.ShareResponse);</code>
+   */
+  public abstract void share(
+      com.google.protobuf.RpcController controller,
+      web.service.grpc.newsfeed.ShareRequest request,
+      com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.ShareResponse> done);
+
+  /**
+   * <code>rpc comment(.CommentRequest) returns (.CommentResponse);</code>
+   */
+  public abstract void comment(
+      com.google.protobuf.RpcController controller,
+      web.service.grpc.newsfeed.CommentRequest request,
+      com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.CommentResponse> done);
+
+  /**
+   * <code>rpc tag(.TagRequest) returns (.TagResponse);</code>
+   */
+  public abstract void tag(
+      com.google.protobuf.RpcController controller,
+      web.service.grpc.newsfeed.TagRequest request,
+      com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.TagResponse> done);
 
   public static final
       com.google.protobuf.Descriptors.ServiceDescriptor
@@ -201,6 +291,21 @@ public  abstract class NewsFeedService
           com.google.protobuf.RpcUtil.<web.service.grpc.newsfeed.LikeResponse>specializeCallback(
             done));
         return;
+      case 3:
+        this.share(controller, (web.service.grpc.newsfeed.ShareRequest)request,
+          com.google.protobuf.RpcUtil.<web.service.grpc.newsfeed.ShareResponse>specializeCallback(
+            done));
+        return;
+      case 4:
+        this.comment(controller, (web.service.grpc.newsfeed.CommentRequest)request,
+          com.google.protobuf.RpcUtil.<web.service.grpc.newsfeed.CommentResponse>specializeCallback(
+            done));
+        return;
+      case 5:
+        this.tag(controller, (web.service.grpc.newsfeed.TagRequest)request,
+          com.google.protobuf.RpcUtil.<web.service.grpc.newsfeed.TagResponse>specializeCallback(
+            done));
+        return;
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -221,6 +326,12 @@ public  abstract class NewsFeedService
         return web.service.grpc.newsfeed.Post.getDefaultInstance();
       case 2:
         return web.service.grpc.newsfeed.LikeRequest.getDefaultInstance();
+      case 3:
+        return web.service.grpc.newsfeed.ShareRequest.getDefaultInstance();
+      case 4:
+        return web.service.grpc.newsfeed.CommentRequest.getDefaultInstance();
+      case 5:
+        return web.service.grpc.newsfeed.TagRequest.getDefaultInstance();
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -241,6 +352,12 @@ public  abstract class NewsFeedService
         return web.service.grpc.newsfeed.SaveNewPostResponse.getDefaultInstance();
       case 2:
         return web.service.grpc.newsfeed.LikeResponse.getDefaultInstance();
+      case 3:
+        return web.service.grpc.newsfeed.ShareResponse.getDefaultInstance();
+      case 4:
+        return web.service.grpc.newsfeed.CommentResponse.getDefaultInstance();
+      case 5:
+        return web.service.grpc.newsfeed.TagResponse.getDefaultInstance();
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -306,6 +423,51 @@ public  abstract class NewsFeedService
           web.service.grpc.newsfeed.LikeResponse.class,
           web.service.grpc.newsfeed.LikeResponse.getDefaultInstance()));
     }
+
+    public  void share(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.ShareRequest request,
+        com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.ShareResponse> done) {
+      channel.callMethod(
+        getDescriptor().getMethods().get(3),
+        controller,
+        request,
+        web.service.grpc.newsfeed.ShareResponse.getDefaultInstance(),
+        com.google.protobuf.RpcUtil.generalizeCallback(
+          done,
+          web.service.grpc.newsfeed.ShareResponse.class,
+          web.service.grpc.newsfeed.ShareResponse.getDefaultInstance()));
+    }
+
+    public  void comment(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.CommentRequest request,
+        com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.CommentResponse> done) {
+      channel.callMethod(
+        getDescriptor().getMethods().get(4),
+        controller,
+        request,
+        web.service.grpc.newsfeed.CommentResponse.getDefaultInstance(),
+        com.google.protobuf.RpcUtil.generalizeCallback(
+          done,
+          web.service.grpc.newsfeed.CommentResponse.class,
+          web.service.grpc.newsfeed.CommentResponse.getDefaultInstance()));
+    }
+
+    public  void tag(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.TagRequest request,
+        com.google.protobuf.RpcCallback<web.service.grpc.newsfeed.TagResponse> done) {
+      channel.callMethod(
+        getDescriptor().getMethods().get(5),
+        controller,
+        request,
+        web.service.grpc.newsfeed.TagResponse.getDefaultInstance(),
+        com.google.protobuf.RpcUtil.generalizeCallback(
+          done,
+          web.service.grpc.newsfeed.TagResponse.class,
+          web.service.grpc.newsfeed.TagResponse.getDefaultInstance()));
+    }
   }
 
   public static BlockingInterface newBlockingStub(
@@ -327,6 +489,21 @@ public  abstract class NewsFeedService
     public web.service.grpc.newsfeed.LikeResponse like(
         com.google.protobuf.RpcController controller,
         web.service.grpc.newsfeed.LikeRequest request)
+        throws com.google.protobuf.ServiceException;
+
+    public web.service.grpc.newsfeed.ShareResponse share(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.ShareRequest request)
+        throws com.google.protobuf.ServiceException;
+
+    public web.service.grpc.newsfeed.CommentResponse comment(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.CommentRequest request)
+        throws com.google.protobuf.ServiceException;
+
+    public web.service.grpc.newsfeed.TagResponse tag(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.TagRequest request)
         throws com.google.protobuf.ServiceException;
   }
 
@@ -370,6 +547,42 @@ public  abstract class NewsFeedService
         controller,
         request,
         web.service.grpc.newsfeed.LikeResponse.getDefaultInstance());
+    }
+
+
+    public web.service.grpc.newsfeed.ShareResponse share(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.ShareRequest request)
+        throws com.google.protobuf.ServiceException {
+      return (web.service.grpc.newsfeed.ShareResponse) channel.callBlockingMethod(
+        getDescriptor().getMethods().get(3),
+        controller,
+        request,
+        web.service.grpc.newsfeed.ShareResponse.getDefaultInstance());
+    }
+
+
+    public web.service.grpc.newsfeed.CommentResponse comment(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.CommentRequest request)
+        throws com.google.protobuf.ServiceException {
+      return (web.service.grpc.newsfeed.CommentResponse) channel.callBlockingMethod(
+        getDescriptor().getMethods().get(4),
+        controller,
+        request,
+        web.service.grpc.newsfeed.CommentResponse.getDefaultInstance());
+    }
+
+
+    public web.service.grpc.newsfeed.TagResponse tag(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.newsfeed.TagRequest request)
+        throws com.google.protobuf.ServiceException {
+      return (web.service.grpc.newsfeed.TagResponse) channel.callBlockingMethod(
+        getDescriptor().getMethods().get(5),
+        controller,
+        request,
+        web.service.grpc.newsfeed.TagResponse.getDefaultInstance());
     }
 
   }

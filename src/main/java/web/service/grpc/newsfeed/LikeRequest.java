@@ -16,8 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private LikeRequest() {
-    userId_ = 0L;
-    postId_ = 0L;
+    userId_ = "";
+    postId_ = "";
   }
 
   @java.lang.Override
@@ -51,14 +51,16 @@ private static final long serialVersionUID = 0L;
             }
             break;
           }
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            userId_ = input.readInt64();
+            userId_ = s;
             break;
           }
-          case 16: {
+          case 18: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            postId_ = input.readInt64();
+            postId_ = s;
             break;
           }
         }
@@ -86,21 +88,71 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int USERID_FIELD_NUMBER = 1;
-  private long userId_;
+  private volatile java.lang.Object userId_;
   /**
-   * <code>int64 userId = 1;</code>
+   * <code>string userId = 1;</code>
    */
-  public long getUserId() {
-    return userId_;
+  public java.lang.String getUserId() {
+    java.lang.Object ref = userId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      userId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string userId = 1;</code>
+   */
+  public com.google.protobuf.ByteString
+      getUserIdBytes() {
+    java.lang.Object ref = userId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      userId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int POSTID_FIELD_NUMBER = 2;
-  private long postId_;
+  private volatile java.lang.Object postId_;
   /**
-   * <code>int64 postId = 2;</code>
+   * <code>string postId = 2;</code>
    */
-  public long getPostId() {
-    return postId_;
+  public java.lang.String getPostId() {
+    java.lang.Object ref = postId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      postId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string postId = 2;</code>
+   */
+  public com.google.protobuf.ByteString
+      getPostIdBytes() {
+    java.lang.Object ref = postId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      postId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -115,11 +167,11 @@ private static final long serialVersionUID = 0L;
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (userId_ != 0L) {
-      output.writeInt64(1, userId_);
+    if (!getUserIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userId_);
     }
-    if (postId_ != 0L) {
-      output.writeInt64(2, postId_);
+    if (!getPostIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, postId_);
     }
     unknownFields.writeTo(output);
   }
@@ -129,13 +181,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (userId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, userId_);
+    if (!getUserIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userId_);
     }
-    if (postId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(2, postId_);
+    if (!getPostIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, postId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -153,10 +203,10 @@ private static final long serialVersionUID = 0L;
     web.service.grpc.newsfeed.LikeRequest other = (web.service.grpc.newsfeed.LikeRequest) obj;
 
     boolean result = true;
-    result = result && (getUserId()
-        == other.getUserId());
-    result = result && (getPostId()
-        == other.getPostId());
+    result = result && getUserId()
+        .equals(other.getUserId());
+    result = result && getPostId()
+        .equals(other.getPostId());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -169,11 +219,9 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + USERID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getUserId());
+    hash = (53 * hash) + getUserId().hashCode();
     hash = (37 * hash) + POSTID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getPostId());
+    hash = (53 * hash) + getPostId().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -303,9 +351,9 @@ private static final long serialVersionUID = 0L;
     }
     public Builder clear() {
       super.clear();
-      userId_ = 0L;
+      userId_ = "";
 
-      postId_ = 0L;
+      postId_ = "";
 
       return this;
     }
@@ -372,11 +420,13 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(web.service.grpc.newsfeed.LikeRequest other) {
       if (other == web.service.grpc.newsfeed.LikeRequest.getDefaultInstance()) return this;
-      if (other.getUserId() != 0L) {
-        setUserId(other.getUserId());
+      if (!other.getUserId().isEmpty()) {
+        userId_ = other.userId_;
+        onChanged();
       }
-      if (other.getPostId() != 0L) {
-        setPostId(other.getPostId());
+      if (!other.getPostId().isEmpty()) {
+        postId_ = other.postId_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -405,54 +455,140 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long userId_ ;
+    private java.lang.Object userId_ = "";
     /**
-     * <code>int64 userId = 1;</code>
+     * <code>string userId = 1;</code>
      */
-    public long getUserId() {
-      return userId_;
+    public java.lang.String getUserId() {
+      java.lang.Object ref = userId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int64 userId = 1;</code>
+     * <code>string userId = 1;</code>
      */
-    public Builder setUserId(long value) {
-      
+    public com.google.protobuf.ByteString
+        getUserIdBytes() {
+      java.lang.Object ref = userId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string userId = 1;</code>
+     */
+    public Builder setUserId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
       userId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 userId = 1;</code>
+     * <code>string userId = 1;</code>
      */
     public Builder clearUserId() {
       
-      userId_ = 0L;
+      userId_ = getDefaultInstance().getUserId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string userId = 1;</code>
+     */
+    public Builder setUserIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      userId_ = value;
       onChanged();
       return this;
     }
 
-    private long postId_ ;
+    private java.lang.Object postId_ = "";
     /**
-     * <code>int64 postId = 2;</code>
+     * <code>string postId = 2;</code>
      */
-    public long getPostId() {
-      return postId_;
+    public java.lang.String getPostId() {
+      java.lang.Object ref = postId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        postId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int64 postId = 2;</code>
+     * <code>string postId = 2;</code>
      */
-    public Builder setPostId(long value) {
-      
+    public com.google.protobuf.ByteString
+        getPostIdBytes() {
+      java.lang.Object ref = postId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        postId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string postId = 2;</code>
+     */
+    public Builder setPostId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
       postId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 postId = 2;</code>
+     * <code>string postId = 2;</code>
      */
     public Builder clearPostId() {
       
-      postId_ = 0L;
+      postId_ = getDefaultInstance().getPostId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string postId = 2;</code>
+     */
+    public Builder setPostIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      postId_ = value;
       onChanged();
       return this;
     }

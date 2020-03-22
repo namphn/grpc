@@ -123,6 +123,102 @@ public final class NewsFeedServiceGrpc {
      return getLikeMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<web.service.grpc.newsfeed.ShareRequest,
+      web.service.grpc.newsfeed.ShareResponse> getShareMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "share",
+      requestType = web.service.grpc.newsfeed.ShareRequest.class,
+      responseType = web.service.grpc.newsfeed.ShareResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<web.service.grpc.newsfeed.ShareRequest,
+      web.service.grpc.newsfeed.ShareResponse> getShareMethod() {
+    io.grpc.MethodDescriptor<web.service.grpc.newsfeed.ShareRequest, web.service.grpc.newsfeed.ShareResponse> getShareMethod;
+    if ((getShareMethod = NewsFeedServiceGrpc.getShareMethod) == null) {
+      synchronized (NewsFeedServiceGrpc.class) {
+        if ((getShareMethod = NewsFeedServiceGrpc.getShareMethod) == null) {
+          NewsFeedServiceGrpc.getShareMethod = getShareMethod = 
+              io.grpc.MethodDescriptor.<web.service.grpc.newsfeed.ShareRequest, web.service.grpc.newsfeed.ShareResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "NewsFeedService", "share"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.grpc.newsfeed.ShareRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.grpc.newsfeed.ShareResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new NewsFeedServiceMethodDescriptorSupplier("share"))
+                  .build();
+          }
+        }
+     }
+     return getShareMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<web.service.grpc.newsfeed.CommentRequest,
+      web.service.grpc.newsfeed.CommentResponse> getCommentMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "comment",
+      requestType = web.service.grpc.newsfeed.CommentRequest.class,
+      responseType = web.service.grpc.newsfeed.CommentResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<web.service.grpc.newsfeed.CommentRequest,
+      web.service.grpc.newsfeed.CommentResponse> getCommentMethod() {
+    io.grpc.MethodDescriptor<web.service.grpc.newsfeed.CommentRequest, web.service.grpc.newsfeed.CommentResponse> getCommentMethod;
+    if ((getCommentMethod = NewsFeedServiceGrpc.getCommentMethod) == null) {
+      synchronized (NewsFeedServiceGrpc.class) {
+        if ((getCommentMethod = NewsFeedServiceGrpc.getCommentMethod) == null) {
+          NewsFeedServiceGrpc.getCommentMethod = getCommentMethod = 
+              io.grpc.MethodDescriptor.<web.service.grpc.newsfeed.CommentRequest, web.service.grpc.newsfeed.CommentResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "NewsFeedService", "comment"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.grpc.newsfeed.CommentRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.grpc.newsfeed.CommentResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new NewsFeedServiceMethodDescriptorSupplier("comment"))
+                  .build();
+          }
+        }
+     }
+     return getCommentMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<web.service.grpc.newsfeed.TagRequest,
+      web.service.grpc.newsfeed.TagResponse> getTagMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "tag",
+      requestType = web.service.grpc.newsfeed.TagRequest.class,
+      responseType = web.service.grpc.newsfeed.TagResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<web.service.grpc.newsfeed.TagRequest,
+      web.service.grpc.newsfeed.TagResponse> getTagMethod() {
+    io.grpc.MethodDescriptor<web.service.grpc.newsfeed.TagRequest, web.service.grpc.newsfeed.TagResponse> getTagMethod;
+    if ((getTagMethod = NewsFeedServiceGrpc.getTagMethod) == null) {
+      synchronized (NewsFeedServiceGrpc.class) {
+        if ((getTagMethod = NewsFeedServiceGrpc.getTagMethod) == null) {
+          NewsFeedServiceGrpc.getTagMethod = getTagMethod = 
+              io.grpc.MethodDescriptor.<web.service.grpc.newsfeed.TagRequest, web.service.grpc.newsfeed.TagResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "NewsFeedService", "tag"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.grpc.newsfeed.TagRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.grpc.newsfeed.TagResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new NewsFeedServiceMethodDescriptorSupplier("tag"))
+                  .build();
+          }
+        }
+     }
+     return getTagMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -171,6 +267,27 @@ public final class NewsFeedServiceGrpc {
       asyncUnimplementedUnaryCall(getLikeMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void share(web.service.grpc.newsfeed.ShareRequest request,
+        io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.ShareResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getShareMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void comment(web.service.grpc.newsfeed.CommentRequest request,
+        io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.CommentResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getCommentMethod(), responseObserver);
+    }
+
+    /**
+     */
+    public void tag(web.service.grpc.newsfeed.TagRequest request,
+        io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.TagResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getTagMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -194,6 +311,27 @@ public final class NewsFeedServiceGrpc {
                 web.service.grpc.newsfeed.LikeRequest,
                 web.service.grpc.newsfeed.LikeResponse>(
                   this, METHODID_LIKE)))
+          .addMethod(
+            getShareMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                web.service.grpc.newsfeed.ShareRequest,
+                web.service.grpc.newsfeed.ShareResponse>(
+                  this, METHODID_SHARE)))
+          .addMethod(
+            getCommentMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                web.service.grpc.newsfeed.CommentRequest,
+                web.service.grpc.newsfeed.CommentResponse>(
+                  this, METHODID_COMMENT)))
+          .addMethod(
+            getTagMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                web.service.grpc.newsfeed.TagRequest,
+                web.service.grpc.newsfeed.TagResponse>(
+                  this, METHODID_TAG)))
           .build();
     }
   }
@@ -239,6 +377,30 @@ public final class NewsFeedServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getLikeMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void share(web.service.grpc.newsfeed.ShareRequest request,
+        io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.ShareResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getShareMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void comment(web.service.grpc.newsfeed.CommentRequest request,
+        io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.CommentResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getCommentMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void tag(web.service.grpc.newsfeed.TagRequest request,
+        io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.TagResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getTagMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -278,6 +440,27 @@ public final class NewsFeedServiceGrpc {
     public web.service.grpc.newsfeed.LikeResponse like(web.service.grpc.newsfeed.LikeRequest request) {
       return blockingUnaryCall(
           getChannel(), getLikeMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public web.service.grpc.newsfeed.ShareResponse share(web.service.grpc.newsfeed.ShareRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getShareMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public web.service.grpc.newsfeed.CommentResponse comment(web.service.grpc.newsfeed.CommentRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getCommentMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public web.service.grpc.newsfeed.TagResponse tag(web.service.grpc.newsfeed.TagRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getTagMethod(), getCallOptions(), request);
     }
   }
 
@@ -322,11 +505,38 @@ public final class NewsFeedServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getLikeMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<web.service.grpc.newsfeed.ShareResponse> share(
+        web.service.grpc.newsfeed.ShareRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getShareMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<web.service.grpc.newsfeed.CommentResponse> comment(
+        web.service.grpc.newsfeed.CommentRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getCommentMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<web.service.grpc.newsfeed.TagResponse> tag(
+        web.service.grpc.newsfeed.TagRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getTagMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_NEWS_FEED = 0;
   private static final int METHODID_SAVE_NEW_POST = 1;
   private static final int METHODID_LIKE = 2;
+  private static final int METHODID_SHARE = 3;
+  private static final int METHODID_COMMENT = 4;
+  private static final int METHODID_TAG = 5;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -356,6 +566,18 @@ public final class NewsFeedServiceGrpc {
         case METHODID_LIKE:
           serviceImpl.like((web.service.grpc.newsfeed.LikeRequest) request,
               (io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.LikeResponse>) responseObserver);
+          break;
+        case METHODID_SHARE:
+          serviceImpl.share((web.service.grpc.newsfeed.ShareRequest) request,
+              (io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.ShareResponse>) responseObserver);
+          break;
+        case METHODID_COMMENT:
+          serviceImpl.comment((web.service.grpc.newsfeed.CommentRequest) request,
+              (io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.CommentResponse>) responseObserver);
+          break;
+        case METHODID_TAG:
+          serviceImpl.tag((web.service.grpc.newsfeed.TagRequest) request,
+              (io.grpc.stub.StreamObserver<web.service.grpc.newsfeed.TagResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -421,6 +643,9 @@ public final class NewsFeedServiceGrpc {
               .addMethod(getGetNewsFeedMethod())
               .addMethod(getSaveNewPostMethod())
               .addMethod(getLikeMethod())
+              .addMethod(getShareMethod())
+              .addMethod(getCommentMethod())
+              .addMethod(getTagMethod())
               .build();
         }
       }

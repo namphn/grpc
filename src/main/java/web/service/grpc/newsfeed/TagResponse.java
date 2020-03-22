@@ -4,19 +4,19 @@
 package web.service.grpc.newsfeed;
 
 /**
- * Protobuf type {@code Tag}
+ * Protobuf type {@code TagResponse}
  */
-public  final class Tag extends
+public  final class TagResponse extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Tag)
-    TagOrBuilder {
+    // @@protoc_insertion_point(message_implements:TagResponse)
+    TagResponseOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Tag.newBuilder() to construct.
-  private Tag(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use TagResponse.newBuilder() to construct.
+  private TagResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Tag() {
-    userId_ = 0L;
+  private TagResponse() {
+    status_ = "";
   }
 
   @java.lang.Override
@@ -24,7 +24,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Tag(
+  private TagResponse(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -50,9 +50,10 @@ private static final long serialVersionUID = 0L;
             }
             break;
           }
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            userId_ = input.readInt64();
+            status_ = s;
             break;
           }
         }
@@ -69,23 +70,48 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return web.service.grpc.newsfeed.Newsfeed.internal_static_Tag_descriptor;
+    return web.service.grpc.newsfeed.Newsfeed.internal_static_TagResponse_descriptor;
   }
 
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return web.service.grpc.newsfeed.Newsfeed.internal_static_Tag_fieldAccessorTable
+    return web.service.grpc.newsfeed.Newsfeed.internal_static_TagResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            web.service.grpc.newsfeed.Tag.class, web.service.grpc.newsfeed.Tag.Builder.class);
+            web.service.grpc.newsfeed.TagResponse.class, web.service.grpc.newsfeed.TagResponse.Builder.class);
   }
 
-  public static final int USERID_FIELD_NUMBER = 1;
-  private long userId_;
+  public static final int STATUS_FIELD_NUMBER = 1;
+  private volatile java.lang.Object status_;
   /**
-   * <code>int64 userId = 1;</code>
+   * <code>string status = 1;</code>
    */
-  public long getUserId() {
-    return userId_;
+  public java.lang.String getStatus() {
+    java.lang.Object ref = status_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      status_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string status = 1;</code>
+   */
+  public com.google.protobuf.ByteString
+      getStatusBytes() {
+    java.lang.Object ref = status_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      status_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   private byte memoizedIsInitialized = -1;
@@ -100,8 +126,8 @@ private static final long serialVersionUID = 0L;
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (userId_ != 0L) {
-      output.writeInt64(1, userId_);
+    if (!getStatusBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, status_);
     }
     unknownFields.writeTo(output);
   }
@@ -111,9 +137,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (userId_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, userId_);
+    if (!getStatusBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, status_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -125,14 +150,14 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof web.service.grpc.newsfeed.Tag)) {
+    if (!(obj instanceof web.service.grpc.newsfeed.TagResponse)) {
       return super.equals(obj);
     }
-    web.service.grpc.newsfeed.Tag other = (web.service.grpc.newsfeed.Tag) obj;
+    web.service.grpc.newsfeed.TagResponse other = (web.service.grpc.newsfeed.TagResponse) obj;
 
     boolean result = true;
-    result = result && (getUserId()
-        == other.getUserId());
+    result = result && getStatus()
+        .equals(other.getStatus());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -144,77 +169,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + USERID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getUserId());
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + getStatus().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static web.service.grpc.newsfeed.Tag parseFrom(
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static web.service.grpc.newsfeed.Tag parseFrom(
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static web.service.grpc.newsfeed.Tag parseFrom(
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static web.service.grpc.newsfeed.Tag parseFrom(
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static web.service.grpc.newsfeed.Tag parseFrom(byte[] data)
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static web.service.grpc.newsfeed.Tag parseFrom(
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static web.service.grpc.newsfeed.Tag parseFrom(java.io.InputStream input)
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static web.service.grpc.newsfeed.Tag parseFrom(
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static web.service.grpc.newsfeed.Tag parseDelimitedFrom(java.io.InputStream input)
+  public static web.service.grpc.newsfeed.TagResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static web.service.grpc.newsfeed.Tag parseDelimitedFrom(
+  public static web.service.grpc.newsfeed.TagResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static web.service.grpc.newsfeed.Tag parseFrom(
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static web.service.grpc.newsfeed.Tag parseFrom(
+  public static web.service.grpc.newsfeed.TagResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -226,7 +250,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(web.service.grpc.newsfeed.Tag prototype) {
+  public static Builder newBuilder(web.service.grpc.newsfeed.TagResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   public Builder toBuilder() {
@@ -241,25 +265,25 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code Tag}
+   * Protobuf type {@code TagResponse}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Tag)
-      web.service.grpc.newsfeed.TagOrBuilder {
+      // @@protoc_insertion_point(builder_implements:TagResponse)
+      web.service.grpc.newsfeed.TagResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return web.service.grpc.newsfeed.Newsfeed.internal_static_Tag_descriptor;
+      return web.service.grpc.newsfeed.Newsfeed.internal_static_TagResponse_descriptor;
     }
 
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return web.service.grpc.newsfeed.Newsfeed.internal_static_Tag_fieldAccessorTable
+      return web.service.grpc.newsfeed.Newsfeed.internal_static_TagResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              web.service.grpc.newsfeed.Tag.class, web.service.grpc.newsfeed.Tag.Builder.class);
+              web.service.grpc.newsfeed.TagResponse.class, web.service.grpc.newsfeed.TagResponse.Builder.class);
     }
 
-    // Construct using web.service.grpc.newsfeed.Tag.newBuilder()
+    // Construct using web.service.grpc.newsfeed.TagResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -276,31 +300,31 @@ private static final long serialVersionUID = 0L;
     }
     public Builder clear() {
       super.clear();
-      userId_ = 0L;
+      status_ = "";
 
       return this;
     }
 
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return web.service.grpc.newsfeed.Newsfeed.internal_static_Tag_descriptor;
+      return web.service.grpc.newsfeed.Newsfeed.internal_static_TagResponse_descriptor;
     }
 
-    public web.service.grpc.newsfeed.Tag getDefaultInstanceForType() {
-      return web.service.grpc.newsfeed.Tag.getDefaultInstance();
+    public web.service.grpc.newsfeed.TagResponse getDefaultInstanceForType() {
+      return web.service.grpc.newsfeed.TagResponse.getDefaultInstance();
     }
 
-    public web.service.grpc.newsfeed.Tag build() {
-      web.service.grpc.newsfeed.Tag result = buildPartial();
+    public web.service.grpc.newsfeed.TagResponse build() {
+      web.service.grpc.newsfeed.TagResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
       return result;
     }
 
-    public web.service.grpc.newsfeed.Tag buildPartial() {
-      web.service.grpc.newsfeed.Tag result = new web.service.grpc.newsfeed.Tag(this);
-      result.userId_ = userId_;
+    public web.service.grpc.newsfeed.TagResponse buildPartial() {
+      web.service.grpc.newsfeed.TagResponse result = new web.service.grpc.newsfeed.TagResponse(this);
+      result.status_ = status_;
       onBuilt();
       return result;
     }
@@ -332,18 +356,19 @@ private static final long serialVersionUID = 0L;
       return (Builder) super.addRepeatedField(field, value);
     }
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof web.service.grpc.newsfeed.Tag) {
-        return mergeFrom((web.service.grpc.newsfeed.Tag)other);
+      if (other instanceof web.service.grpc.newsfeed.TagResponse) {
+        return mergeFrom((web.service.grpc.newsfeed.TagResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(web.service.grpc.newsfeed.Tag other) {
-      if (other == web.service.grpc.newsfeed.Tag.getDefaultInstance()) return this;
-      if (other.getUserId() != 0L) {
-        setUserId(other.getUserId());
+    public Builder mergeFrom(web.service.grpc.newsfeed.TagResponse other) {
+      if (other == web.service.grpc.newsfeed.TagResponse.getDefaultInstance()) return this;
+      if (!other.getStatus().isEmpty()) {
+        status_ = other.status_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -358,11 +383,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      web.service.grpc.newsfeed.Tag parsedMessage = null;
+      web.service.grpc.newsfeed.TagResponse parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (web.service.grpc.newsfeed.Tag) e.getUnfinishedMessage();
+        parsedMessage = (web.service.grpc.newsfeed.TagResponse) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -372,28 +397,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long userId_ ;
+    private java.lang.Object status_ = "";
     /**
-     * <code>int64 userId = 1;</code>
+     * <code>string status = 1;</code>
      */
-    public long getUserId() {
-      return userId_;
+    public java.lang.String getStatus() {
+      java.lang.Object ref = status_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        status_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int64 userId = 1;</code>
+     * <code>string status = 1;</code>
      */
-    public Builder setUserId(long value) {
-      
-      userId_ = value;
+    public com.google.protobuf.ByteString
+        getStatusBytes() {
+      java.lang.Object ref = status_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        status_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string status = 1;</code>
+     */
+    public Builder setStatus(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      status_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 userId = 1;</code>
+     * <code>string status = 1;</code>
      */
-    public Builder clearUserId() {
+    public Builder clearStatus() {
       
-      userId_ = 0L;
+      status_ = getDefaultInstance().getStatus();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string status = 1;</code>
+     */
+    public Builder setStatusBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      status_ = value;
       onChanged();
       return this;
     }
@@ -408,39 +476,39 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Tag)
+    // @@protoc_insertion_point(builder_scope:TagResponse)
   }
 
-  // @@protoc_insertion_point(class_scope:Tag)
-  private static final web.service.grpc.newsfeed.Tag DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:TagResponse)
+  private static final web.service.grpc.newsfeed.TagResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new web.service.grpc.newsfeed.Tag();
+    DEFAULT_INSTANCE = new web.service.grpc.newsfeed.TagResponse();
   }
 
-  public static web.service.grpc.newsfeed.Tag getDefaultInstance() {
+  public static web.service.grpc.newsfeed.TagResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Tag>
-      PARSER = new com.google.protobuf.AbstractParser<Tag>() {
-    public Tag parsePartialFrom(
+  private static final com.google.protobuf.Parser<TagResponse>
+      PARSER = new com.google.protobuf.AbstractParser<TagResponse>() {
+    public TagResponse parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Tag(input, extensionRegistry);
+      return new TagResponse(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Tag> parser() {
+  public static com.google.protobuf.Parser<TagResponse> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Tag> getParserForType() {
+  public com.google.protobuf.Parser<TagResponse> getParserForType() {
     return PARSER;
   }
 
-  public web.service.grpc.newsfeed.Tag getDefaultInstanceForType() {
+  public web.service.grpc.newsfeed.TagResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -16,13 +16,14 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Post() {
-    id_ = 0L;
+    id_ = "";
     userId_ = 0L;
     content_ = "";
     comments_ = java.util.Collections.emptyList();
-    likes_ = java.util.Collections.emptyList();
+    likes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     shares_ = java.util.Collections.emptyList();
-    tags_ = java.util.Collections.emptyList();
+    tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    images_ = com.google.protobuf.LazyStringArrayList.EMPTY;
   }
 
   @java.lang.Override
@@ -56,9 +57,10 @@ private static final long serialVersionUID = 0L;
             }
             break;
           }
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            id_ = input.readInt64();
+            id_ = s;
             break;
           }
           case 16: {
@@ -82,12 +84,12 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 42: {
+            java.lang.String s = input.readStringRequireUtf8();
             if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-              likes_ = new java.util.ArrayList<web.service.grpc.newsfeed.Like>();
+              likes_ = new com.google.protobuf.LazyStringArrayList();
               mutable_bitField0_ |= 0x00000010;
             }
-            likes_.add(
-                input.readMessage(web.service.grpc.newsfeed.Like.parser(), extensionRegistry));
+            likes_.add(s);
             break;
           }
           case 50: {
@@ -100,12 +102,21 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 58: {
+            java.lang.String s = input.readStringRequireUtf8();
             if (!((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-              tags_ = new java.util.ArrayList<web.service.grpc.newsfeed.Tag>();
+              tags_ = new com.google.protobuf.LazyStringArrayList();
               mutable_bitField0_ |= 0x00000040;
             }
-            tags_.add(
-                input.readMessage(web.service.grpc.newsfeed.Tag.parser(), extensionRegistry));
+            tags_.add(s);
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+            if (!((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+              images_ = new com.google.protobuf.LazyStringArrayList();
+              mutable_bitField0_ |= 0x00000080;
+            }
+            images_.add(s);
             break;
           }
         }
@@ -120,13 +131,16 @@ private static final long serialVersionUID = 0L;
         comments_ = java.util.Collections.unmodifiableList(comments_);
       }
       if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
-        likes_ = java.util.Collections.unmodifiableList(likes_);
+        likes_ = likes_.getUnmodifiableView();
       }
       if (((mutable_bitField0_ & 0x00000020) == 0x00000020)) {
         shares_ = java.util.Collections.unmodifiableList(shares_);
       }
       if (((mutable_bitField0_ & 0x00000040) == 0x00000040)) {
-        tags_ = java.util.Collections.unmodifiableList(tags_);
+        tags_ = tags_.getUnmodifiableView();
+      }
+      if (((mutable_bitField0_ & 0x00000080) == 0x00000080)) {
+        images_ = images_.getUnmodifiableView();
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -146,12 +160,37 @@ private static final long serialVersionUID = 0L;
 
   private int bitField0_;
   public static final int ID_FIELD_NUMBER = 1;
-  private long id_;
+  private volatile java.lang.Object id_;
   /**
-   * <code>int64 id = 1;</code>
+   * <code>string id = 1;</code>
    */
-  public long getId() {
-    return id_;
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      id_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string id = 1;</code>
+   */
+  public com.google.protobuf.ByteString
+      getIdBytes() {
+    java.lang.Object ref = id_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      id_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int USERID_FIELD_NUMBER = 2;
@@ -233,38 +272,32 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int LIKES_FIELD_NUMBER = 5;
-  private java.util.List<web.service.grpc.newsfeed.Like> likes_;
+  private com.google.protobuf.LazyStringList likes_;
   /**
-   * <code>repeated .Like likes = 5;</code>
+   * <code>repeated string likes = 5;</code>
    */
-  public java.util.List<web.service.grpc.newsfeed.Like> getLikesList() {
+  public com.google.protobuf.ProtocolStringList
+      getLikesList() {
     return likes_;
   }
   /**
-   * <code>repeated .Like likes = 5;</code>
-   */
-  public java.util.List<? extends web.service.grpc.newsfeed.LikeOrBuilder> 
-      getLikesOrBuilderList() {
-    return likes_;
-  }
-  /**
-   * <code>repeated .Like likes = 5;</code>
+   * <code>repeated string likes = 5;</code>
    */
   public int getLikesCount() {
     return likes_.size();
   }
   /**
-   * <code>repeated .Like likes = 5;</code>
+   * <code>repeated string likes = 5;</code>
    */
-  public web.service.grpc.newsfeed.Like getLikes(int index) {
+  public java.lang.String getLikes(int index) {
     return likes_.get(index);
   }
   /**
-   * <code>repeated .Like likes = 5;</code>
+   * <code>repeated string likes = 5;</code>
    */
-  public web.service.grpc.newsfeed.LikeOrBuilder getLikesOrBuilder(
-      int index) {
-    return likes_.get(index);
+  public com.google.protobuf.ByteString
+      getLikesBytes(int index) {
+    return likes_.getByteString(index);
   }
 
   public static final int SHARES_FIELD_NUMBER = 6;
@@ -303,38 +336,61 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int TAGS_FIELD_NUMBER = 7;
-  private java.util.List<web.service.grpc.newsfeed.Tag> tags_;
+  private com.google.protobuf.LazyStringList tags_;
   /**
-   * <code>repeated .Tag tags = 7;</code>
+   * <code>repeated string tags = 7;</code>
    */
-  public java.util.List<web.service.grpc.newsfeed.Tag> getTagsList() {
+  public com.google.protobuf.ProtocolStringList
+      getTagsList() {
     return tags_;
   }
   /**
-   * <code>repeated .Tag tags = 7;</code>
-   */
-  public java.util.List<? extends web.service.grpc.newsfeed.TagOrBuilder> 
-      getTagsOrBuilderList() {
-    return tags_;
-  }
-  /**
-   * <code>repeated .Tag tags = 7;</code>
+   * <code>repeated string tags = 7;</code>
    */
   public int getTagsCount() {
     return tags_.size();
   }
   /**
-   * <code>repeated .Tag tags = 7;</code>
+   * <code>repeated string tags = 7;</code>
    */
-  public web.service.grpc.newsfeed.Tag getTags(int index) {
+  public java.lang.String getTags(int index) {
     return tags_.get(index);
   }
   /**
-   * <code>repeated .Tag tags = 7;</code>
+   * <code>repeated string tags = 7;</code>
    */
-  public web.service.grpc.newsfeed.TagOrBuilder getTagsOrBuilder(
-      int index) {
-    return tags_.get(index);
+  public com.google.protobuf.ByteString
+      getTagsBytes(int index) {
+    return tags_.getByteString(index);
+  }
+
+  public static final int IMAGES_FIELD_NUMBER = 8;
+  private com.google.protobuf.LazyStringList images_;
+  /**
+   * <code>repeated string images = 8;</code>
+   */
+  public com.google.protobuf.ProtocolStringList
+      getImagesList() {
+    return images_;
+  }
+  /**
+   * <code>repeated string images = 8;</code>
+   */
+  public int getImagesCount() {
+    return images_.size();
+  }
+  /**
+   * <code>repeated string images = 8;</code>
+   */
+  public java.lang.String getImages(int index) {
+    return images_.get(index);
+  }
+  /**
+   * <code>repeated string images = 8;</code>
+   */
+  public com.google.protobuf.ByteString
+      getImagesBytes(int index) {
+    return images_.getByteString(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -349,8 +405,8 @@ private static final long serialVersionUID = 0L;
 
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (id_ != 0L) {
-      output.writeInt64(1, id_);
+    if (!getIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
     if (userId_ != 0L) {
       output.writeInt64(2, userId_);
@@ -362,13 +418,16 @@ private static final long serialVersionUID = 0L;
       output.writeMessage(4, comments_.get(i));
     }
     for (int i = 0; i < likes_.size(); i++) {
-      output.writeMessage(5, likes_.get(i));
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, likes_.getRaw(i));
     }
     for (int i = 0; i < shares_.size(); i++) {
       output.writeMessage(6, shares_.get(i));
     }
     for (int i = 0; i < tags_.size(); i++) {
-      output.writeMessage(7, tags_.get(i));
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 7, tags_.getRaw(i));
+    }
+    for (int i = 0; i < images_.size(); i++) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, images_.getRaw(i));
     }
     unknownFields.writeTo(output);
   }
@@ -378,9 +437,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (id_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, id_);
+    if (!getIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
     }
     if (userId_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
@@ -393,17 +451,33 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, comments_.get(i));
     }
-    for (int i = 0; i < likes_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, likes_.get(i));
+    {
+      int dataSize = 0;
+      for (int i = 0; i < likes_.size(); i++) {
+        dataSize += computeStringSizeNoTag(likes_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getLikesList().size();
     }
     for (int i = 0; i < shares_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(6, shares_.get(i));
     }
-    for (int i = 0; i < tags_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(7, tags_.get(i));
+    {
+      int dataSize = 0;
+      for (int i = 0; i < tags_.size(); i++) {
+        dataSize += computeStringSizeNoTag(tags_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getTagsList().size();
+    }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < images_.size(); i++) {
+        dataSize += computeStringSizeNoTag(images_.getRaw(i));
+      }
+      size += dataSize;
+      size += 1 * getImagesList().size();
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -421,8 +495,8 @@ private static final long serialVersionUID = 0L;
     web.service.grpc.newsfeed.Post other = (web.service.grpc.newsfeed.Post) obj;
 
     boolean result = true;
-    result = result && (getId()
-        == other.getId());
+    result = result && getId()
+        .equals(other.getId());
     result = result && (getUserId()
         == other.getUserId());
     result = result && getContent()
@@ -435,6 +509,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getSharesList());
     result = result && getTagsList()
         .equals(other.getTagsList());
+    result = result && getImagesList()
+        .equals(other.getImagesList());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -447,8 +523,7 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getId());
+    hash = (53 * hash) + getId().hashCode();
     hash = (37 * hash) + USERID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getUserId());
@@ -469,6 +544,10 @@ private static final long serialVersionUID = 0L;
     if (getTagsCount() > 0) {
       hash = (37 * hash) + TAGS_FIELD_NUMBER;
       hash = (53 * hash) + getTagsList().hashCode();
+    }
+    if (getImagesCount() > 0) {
+      hash = (37 * hash) + IMAGES_FIELD_NUMBER;
+      hash = (53 * hash) + getImagesList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -596,14 +675,12 @@ private static final long serialVersionUID = 0L;
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
         getCommentsFieldBuilder();
-        getLikesFieldBuilder();
         getSharesFieldBuilder();
-        getTagsFieldBuilder();
       }
     }
     public Builder clear() {
       super.clear();
-      id_ = 0L;
+      id_ = "";
 
       userId_ = 0L;
 
@@ -615,24 +692,18 @@ private static final long serialVersionUID = 0L;
       } else {
         commentsBuilder_.clear();
       }
-      if (likesBuilder_ == null) {
-        likes_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000010);
-      } else {
-        likesBuilder_.clear();
-      }
+      likes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000010);
       if (sharesBuilder_ == null) {
         shares_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000020);
       } else {
         sharesBuilder_.clear();
       }
-      if (tagsBuilder_ == null) {
-        tags_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
-      } else {
-        tagsBuilder_.clear();
-      }
+      tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000040);
+      images_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000080);
       return this;
     }
 
@@ -669,15 +740,11 @@ private static final long serialVersionUID = 0L;
       } else {
         result.comments_ = commentsBuilder_.build();
       }
-      if (likesBuilder_ == null) {
-        if (((bitField0_ & 0x00000010) == 0x00000010)) {
-          likes_ = java.util.Collections.unmodifiableList(likes_);
-          bitField0_ = (bitField0_ & ~0x00000010);
-        }
-        result.likes_ = likes_;
-      } else {
-        result.likes_ = likesBuilder_.build();
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        likes_ = likes_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000010);
       }
+      result.likes_ = likes_;
       if (sharesBuilder_ == null) {
         if (((bitField0_ & 0x00000020) == 0x00000020)) {
           shares_ = java.util.Collections.unmodifiableList(shares_);
@@ -687,15 +754,16 @@ private static final long serialVersionUID = 0L;
       } else {
         result.shares_ = sharesBuilder_.build();
       }
-      if (tagsBuilder_ == null) {
-        if (((bitField0_ & 0x00000040) == 0x00000040)) {
-          tags_ = java.util.Collections.unmodifiableList(tags_);
-          bitField0_ = (bitField0_ & ~0x00000040);
-        }
-        result.tags_ = tags_;
-      } else {
-        result.tags_ = tagsBuilder_.build();
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        tags_ = tags_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000040);
       }
+      result.tags_ = tags_;
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        images_ = images_.getUnmodifiableView();
+        bitField0_ = (bitField0_ & ~0x00000080);
+      }
+      result.images_ = images_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -738,8 +806,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(web.service.grpc.newsfeed.Post other) {
       if (other == web.service.grpc.newsfeed.Post.getDefaultInstance()) return this;
-      if (other.getId() != 0L) {
-        setId(other.getId());
+      if (!other.getId().isEmpty()) {
+        id_ = other.id_;
+        onChanged();
       }
       if (other.getUserId() != 0L) {
         setUserId(other.getUserId());
@@ -774,31 +843,15 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
-      if (likesBuilder_ == null) {
-        if (!other.likes_.isEmpty()) {
-          if (likes_.isEmpty()) {
-            likes_ = other.likes_;
-            bitField0_ = (bitField0_ & ~0x00000010);
-          } else {
-            ensureLikesIsMutable();
-            likes_.addAll(other.likes_);
-          }
-          onChanged();
+      if (!other.likes_.isEmpty()) {
+        if (likes_.isEmpty()) {
+          likes_ = other.likes_;
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          ensureLikesIsMutable();
+          likes_.addAll(other.likes_);
         }
-      } else {
-        if (!other.likes_.isEmpty()) {
-          if (likesBuilder_.isEmpty()) {
-            likesBuilder_.dispose();
-            likesBuilder_ = null;
-            likes_ = other.likes_;
-            bitField0_ = (bitField0_ & ~0x00000010);
-            likesBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getLikesFieldBuilder() : null;
-          } else {
-            likesBuilder_.addAllMessages(other.likes_);
-          }
-        }
+        onChanged();
       }
       if (sharesBuilder_ == null) {
         if (!other.shares_.isEmpty()) {
@@ -826,31 +879,25 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
-      if (tagsBuilder_ == null) {
-        if (!other.tags_.isEmpty()) {
-          if (tags_.isEmpty()) {
-            tags_ = other.tags_;
-            bitField0_ = (bitField0_ & ~0x00000040);
-          } else {
-            ensureTagsIsMutable();
-            tags_.addAll(other.tags_);
-          }
-          onChanged();
+      if (!other.tags_.isEmpty()) {
+        if (tags_.isEmpty()) {
+          tags_ = other.tags_;
+          bitField0_ = (bitField0_ & ~0x00000040);
+        } else {
+          ensureTagsIsMutable();
+          tags_.addAll(other.tags_);
         }
-      } else {
-        if (!other.tags_.isEmpty()) {
-          if (tagsBuilder_.isEmpty()) {
-            tagsBuilder_.dispose();
-            tagsBuilder_ = null;
-            tags_ = other.tags_;
-            bitField0_ = (bitField0_ & ~0x00000040);
-            tagsBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getTagsFieldBuilder() : null;
-          } else {
-            tagsBuilder_.addAllMessages(other.tags_);
-          }
+        onChanged();
+      }
+      if (!other.images_.isEmpty()) {
+        if (images_.isEmpty()) {
+          images_ = other.images_;
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          ensureImagesIsMutable();
+          images_.addAll(other.images_);
         }
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -880,28 +927,71 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private long id_ ;
+    private java.lang.Object id_ = "";
     /**
-     * <code>int64 id = 1;</code>
+     * <code>string id = 1;</code>
      */
-    public long getId() {
-      return id_;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int64 id = 1;</code>
+     * <code>string id = 1;</code>
      */
-    public Builder setId(long value) {
-      
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string id = 1;</code>
+     */
+    public Builder setId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
       id_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 id = 1;</code>
+     * <code>string id = 1;</code>
      */
     public Builder clearId() {
       
-      id_ = 0L;
+      id_ = getDefaultInstance().getId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string id = 1;</code>
+     */
+    public Builder setIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      id_ = value;
       onChanged();
       return this;
     }
@@ -1241,244 +1331,98 @@ private static final long serialVersionUID = 0L;
       return commentsBuilder_;
     }
 
-    private java.util.List<web.service.grpc.newsfeed.Like> likes_ =
-      java.util.Collections.emptyList();
+    private com.google.protobuf.LazyStringList likes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureLikesIsMutable() {
       if (!((bitField0_ & 0x00000010) == 0x00000010)) {
-        likes_ = new java.util.ArrayList<web.service.grpc.newsfeed.Like>(likes_);
+        likes_ = new com.google.protobuf.LazyStringArrayList(likes_);
         bitField0_ |= 0x00000010;
        }
     }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        web.service.grpc.newsfeed.Like, web.service.grpc.newsfeed.Like.Builder, web.service.grpc.newsfeed.LikeOrBuilder> likesBuilder_;
-
     /**
-     * <code>repeated .Like likes = 5;</code>
+     * <code>repeated string likes = 5;</code>
      */
-    public java.util.List<web.service.grpc.newsfeed.Like> getLikesList() {
-      if (likesBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(likes_);
-      } else {
-        return likesBuilder_.getMessageList();
-      }
+    public com.google.protobuf.ProtocolStringList
+        getLikesList() {
+      return likes_.getUnmodifiableView();
     }
     /**
-     * <code>repeated .Like likes = 5;</code>
+     * <code>repeated string likes = 5;</code>
      */
     public int getLikesCount() {
-      if (likesBuilder_ == null) {
-        return likes_.size();
-      } else {
-        return likesBuilder_.getCount();
-      }
+      return likes_.size();
     }
     /**
-     * <code>repeated .Like likes = 5;</code>
+     * <code>repeated string likes = 5;</code>
      */
-    public web.service.grpc.newsfeed.Like getLikes(int index) {
-      if (likesBuilder_ == null) {
-        return likes_.get(index);
-      } else {
-        return likesBuilder_.getMessage(index);
-      }
+    public java.lang.String getLikes(int index) {
+      return likes_.get(index);
     }
     /**
-     * <code>repeated .Like likes = 5;</code>
+     * <code>repeated string likes = 5;</code>
      */
-    public Builder setLikes(
-        int index, web.service.grpc.newsfeed.Like value) {
-      if (likesBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureLikesIsMutable();
-        likes_.set(index, value);
-        onChanged();
-      } else {
-        likesBuilder_.setMessage(index, value);
-      }
-      return this;
+    public com.google.protobuf.ByteString
+        getLikesBytes(int index) {
+      return likes_.getByteString(index);
     }
     /**
-     * <code>repeated .Like likes = 5;</code>
+     * <code>repeated string likes = 5;</code>
      */
     public Builder setLikes(
-        int index, web.service.grpc.newsfeed.Like.Builder builderForValue) {
-      if (likesBuilder_ == null) {
-        ensureLikesIsMutable();
-        likes_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        likesBuilder_.setMessage(index, builderForValue.build());
-      }
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureLikesIsMutable();
+      likes_.set(index, value);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Like likes = 5;</code>
-     */
-    public Builder addLikes(web.service.grpc.newsfeed.Like value) {
-      if (likesBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureLikesIsMutable();
-        likes_.add(value);
-        onChanged();
-      } else {
-        likesBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Like likes = 5;</code>
+     * <code>repeated string likes = 5;</code>
      */
     public Builder addLikes(
-        int index, web.service.grpc.newsfeed.Like value) {
-      if (likesBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureLikesIsMutable();
-        likes_.add(index, value);
-        onChanged();
-      } else {
-        likesBuilder_.addMessage(index, value);
-      }
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureLikesIsMutable();
+      likes_.add(value);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Like likes = 5;</code>
-     */
-    public Builder addLikes(
-        web.service.grpc.newsfeed.Like.Builder builderForValue) {
-      if (likesBuilder_ == null) {
-        ensureLikesIsMutable();
-        likes_.add(builderForValue.build());
-        onChanged();
-      } else {
-        likesBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Like likes = 5;</code>
-     */
-    public Builder addLikes(
-        int index, web.service.grpc.newsfeed.Like.Builder builderForValue) {
-      if (likesBuilder_ == null) {
-        ensureLikesIsMutable();
-        likes_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        likesBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Like likes = 5;</code>
+     * <code>repeated string likes = 5;</code>
      */
     public Builder addAllLikes(
-        java.lang.Iterable<? extends web.service.grpc.newsfeed.Like> values) {
-      if (likesBuilder_ == null) {
-        ensureLikesIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, likes_);
-        onChanged();
-      } else {
-        likesBuilder_.addAllMessages(values);
-      }
+        java.lang.Iterable<java.lang.String> values) {
+      ensureLikesIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, likes_);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Like likes = 5;</code>
+     * <code>repeated string likes = 5;</code>
      */
     public Builder clearLikes() {
-      if (likesBuilder_ == null) {
-        likes_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000010);
-        onChanged();
-      } else {
-        likesBuilder_.clear();
-      }
+      likes_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000010);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Like likes = 5;</code>
+     * <code>repeated string likes = 5;</code>
      */
-    public Builder removeLikes(int index) {
-      if (likesBuilder_ == null) {
-        ensureLikesIsMutable();
-        likes_.remove(index);
-        onChanged();
-      } else {
-        likesBuilder_.remove(index);
-      }
+    public Builder addLikesBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureLikesIsMutable();
+      likes_.add(value);
+      onChanged();
       return this;
-    }
-    /**
-     * <code>repeated .Like likes = 5;</code>
-     */
-    public web.service.grpc.newsfeed.Like.Builder getLikesBuilder(
-        int index) {
-      return getLikesFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <code>repeated .Like likes = 5;</code>
-     */
-    public web.service.grpc.newsfeed.LikeOrBuilder getLikesOrBuilder(
-        int index) {
-      if (likesBuilder_ == null) {
-        return likes_.get(index);  } else {
-        return likesBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     * <code>repeated .Like likes = 5;</code>
-     */
-    public java.util.List<? extends web.service.grpc.newsfeed.LikeOrBuilder> 
-         getLikesOrBuilderList() {
-      if (likesBuilder_ != null) {
-        return likesBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(likes_);
-      }
-    }
-    /**
-     * <code>repeated .Like likes = 5;</code>
-     */
-    public web.service.grpc.newsfeed.Like.Builder addLikesBuilder() {
-      return getLikesFieldBuilder().addBuilder(
-          web.service.grpc.newsfeed.Like.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Like likes = 5;</code>
-     */
-    public web.service.grpc.newsfeed.Like.Builder addLikesBuilder(
-        int index) {
-      return getLikesFieldBuilder().addBuilder(
-          index, web.service.grpc.newsfeed.Like.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Like likes = 5;</code>
-     */
-    public java.util.List<web.service.grpc.newsfeed.Like.Builder> 
-         getLikesBuilderList() {
-      return getLikesFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        web.service.grpc.newsfeed.Like, web.service.grpc.newsfeed.Like.Builder, web.service.grpc.newsfeed.LikeOrBuilder> 
-        getLikesFieldBuilder() {
-      if (likesBuilder_ == null) {
-        likesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            web.service.grpc.newsfeed.Like, web.service.grpc.newsfeed.Like.Builder, web.service.grpc.newsfeed.LikeOrBuilder>(
-                likes_,
-                ((bitField0_ & 0x00000010) == 0x00000010),
-                getParentForChildren(),
-                isClean());
-        likes_ = null;
-      }
-      return likesBuilder_;
     }
 
     private java.util.List<web.service.grpc.newsfeed.Share> shares_ =
@@ -1721,244 +1665,192 @@ private static final long serialVersionUID = 0L;
       return sharesBuilder_;
     }
 
-    private java.util.List<web.service.grpc.newsfeed.Tag> tags_ =
-      java.util.Collections.emptyList();
+    private com.google.protobuf.LazyStringList tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
     private void ensureTagsIsMutable() {
       if (!((bitField0_ & 0x00000040) == 0x00000040)) {
-        tags_ = new java.util.ArrayList<web.service.grpc.newsfeed.Tag>(tags_);
+        tags_ = new com.google.protobuf.LazyStringArrayList(tags_);
         bitField0_ |= 0x00000040;
        }
     }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        web.service.grpc.newsfeed.Tag, web.service.grpc.newsfeed.Tag.Builder, web.service.grpc.newsfeed.TagOrBuilder> tagsBuilder_;
-
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string tags = 7;</code>
      */
-    public java.util.List<web.service.grpc.newsfeed.Tag> getTagsList() {
-      if (tagsBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(tags_);
-      } else {
-        return tagsBuilder_.getMessageList();
-      }
+    public com.google.protobuf.ProtocolStringList
+        getTagsList() {
+      return tags_.getUnmodifiableView();
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string tags = 7;</code>
      */
     public int getTagsCount() {
-      if (tagsBuilder_ == null) {
-        return tags_.size();
-      } else {
-        return tagsBuilder_.getCount();
-      }
+      return tags_.size();
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string tags = 7;</code>
      */
-    public web.service.grpc.newsfeed.Tag getTags(int index) {
-      if (tagsBuilder_ == null) {
-        return tags_.get(index);
-      } else {
-        return tagsBuilder_.getMessage(index);
-      }
+    public java.lang.String getTags(int index) {
+      return tags_.get(index);
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string tags = 7;</code>
      */
-    public Builder setTags(
-        int index, web.service.grpc.newsfeed.Tag value) {
-      if (tagsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureTagsIsMutable();
-        tags_.set(index, value);
-        onChanged();
-      } else {
-        tagsBuilder_.setMessage(index, value);
-      }
-      return this;
+    public com.google.protobuf.ByteString
+        getTagsBytes(int index) {
+      return tags_.getByteString(index);
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string tags = 7;</code>
      */
     public Builder setTags(
-        int index, web.service.grpc.newsfeed.Tag.Builder builderForValue) {
-      if (tagsBuilder_ == null) {
-        ensureTagsIsMutable();
-        tags_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        tagsBuilder_.setMessage(index, builderForValue.build());
-      }
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTagsIsMutable();
+      tags_.set(index, value);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
-     */
-    public Builder addTags(web.service.grpc.newsfeed.Tag value) {
-      if (tagsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureTagsIsMutable();
-        tags_.add(value);
-        onChanged();
-      } else {
-        tagsBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string tags = 7;</code>
      */
     public Builder addTags(
-        int index, web.service.grpc.newsfeed.Tag value) {
-      if (tagsBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureTagsIsMutable();
-        tags_.add(index, value);
-        onChanged();
-      } else {
-        tagsBuilder_.addMessage(index, value);
-      }
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureTagsIsMutable();
+      tags_.add(value);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
-     */
-    public Builder addTags(
-        web.service.grpc.newsfeed.Tag.Builder builderForValue) {
-      if (tagsBuilder_ == null) {
-        ensureTagsIsMutable();
-        tags_.add(builderForValue.build());
-        onChanged();
-      } else {
-        tagsBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Tag tags = 7;</code>
-     */
-    public Builder addTags(
-        int index, web.service.grpc.newsfeed.Tag.Builder builderForValue) {
-      if (tagsBuilder_ == null) {
-        ensureTagsIsMutable();
-        tags_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        tagsBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string tags = 7;</code>
      */
     public Builder addAllTags(
-        java.lang.Iterable<? extends web.service.grpc.newsfeed.Tag> values) {
-      if (tagsBuilder_ == null) {
-        ensureTagsIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, tags_);
-        onChanged();
-      } else {
-        tagsBuilder_.addAllMessages(values);
-      }
+        java.lang.Iterable<java.lang.String> values) {
+      ensureTagsIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, tags_);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string tags = 7;</code>
      */
     public Builder clearTags() {
-      if (tagsBuilder_ == null) {
-        tags_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
-        onChanged();
-      } else {
-        tagsBuilder_.clear();
-      }
+      tags_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000040);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string tags = 7;</code>
      */
-    public Builder removeTags(int index) {
-      if (tagsBuilder_ == null) {
-        ensureTagsIsMutable();
-        tags_.remove(index);
-        onChanged();
-      } else {
-        tagsBuilder_.remove(index);
-      }
+    public Builder addTagsBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureTagsIsMutable();
+      tags_.add(value);
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.LazyStringList images_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+    private void ensureImagesIsMutable() {
+      if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+        images_ = new com.google.protobuf.LazyStringArrayList(images_);
+        bitField0_ |= 0x00000080;
+       }
+    }
+    /**
+     * <code>repeated string images = 8;</code>
+     */
+    public com.google.protobuf.ProtocolStringList
+        getImagesList() {
+      return images_.getUnmodifiableView();
+    }
+    /**
+     * <code>repeated string images = 8;</code>
+     */
+    public int getImagesCount() {
+      return images_.size();
+    }
+    /**
+     * <code>repeated string images = 8;</code>
+     */
+    public java.lang.String getImages(int index) {
+      return images_.get(index);
+    }
+    /**
+     * <code>repeated string images = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getImagesBytes(int index) {
+      return images_.getByteString(index);
+    }
+    /**
+     * <code>repeated string images = 8;</code>
+     */
+    public Builder setImages(
+        int index, java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureImagesIsMutable();
+      images_.set(index, value);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string images = 8;</code>
      */
-    public web.service.grpc.newsfeed.Tag.Builder getTagsBuilder(
-        int index) {
-      return getTagsFieldBuilder().getBuilder(index);
+    public Builder addImages(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  ensureImagesIsMutable();
+      images_.add(value);
+      onChanged();
+      return this;
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string images = 8;</code>
      */
-    public web.service.grpc.newsfeed.TagOrBuilder getTagsOrBuilder(
-        int index) {
-      if (tagsBuilder_ == null) {
-        return tags_.get(index);  } else {
-        return tagsBuilder_.getMessageOrBuilder(index);
-      }
+    public Builder addAllImages(
+        java.lang.Iterable<java.lang.String> values) {
+      ensureImagesIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, images_);
+      onChanged();
+      return this;
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string images = 8;</code>
      */
-    public java.util.List<? extends web.service.grpc.newsfeed.TagOrBuilder> 
-         getTagsOrBuilderList() {
-      if (tagsBuilder_ != null) {
-        return tagsBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(tags_);
-      }
+    public Builder clearImages() {
+      images_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      bitField0_ = (bitField0_ & ~0x00000080);
+      onChanged();
+      return this;
     }
     /**
-     * <code>repeated .Tag tags = 7;</code>
+     * <code>repeated string images = 8;</code>
      */
-    public web.service.grpc.newsfeed.Tag.Builder addTagsBuilder() {
-      return getTagsFieldBuilder().addBuilder(
-          web.service.grpc.newsfeed.Tag.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Tag tags = 7;</code>
-     */
-    public web.service.grpc.newsfeed.Tag.Builder addTagsBuilder(
-        int index) {
-      return getTagsFieldBuilder().addBuilder(
-          index, web.service.grpc.newsfeed.Tag.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Tag tags = 7;</code>
-     */
-    public java.util.List<web.service.grpc.newsfeed.Tag.Builder> 
-         getTagsBuilderList() {
-      return getTagsFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        web.service.grpc.newsfeed.Tag, web.service.grpc.newsfeed.Tag.Builder, web.service.grpc.newsfeed.TagOrBuilder> 
-        getTagsFieldBuilder() {
-      if (tagsBuilder_ == null) {
-        tagsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            web.service.grpc.newsfeed.Tag, web.service.grpc.newsfeed.Tag.Builder, web.service.grpc.newsfeed.TagOrBuilder>(
-                tags_,
-                ((bitField0_ & 0x00000040) == 0x00000040),
-                getParentForChildren(),
-                isClean());
-        tags_ = null;
-      }
-      return tagsBuilder_;
+    public Builder addImagesBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      ensureImagesIsMutable();
+      images_.add(value);
+      onChanged();
+      return this;
     }
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {

@@ -8,9 +8,14 @@ public interface ShareOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 userId = 1;</code>
+   * <code>string userId = 1;</code>
    */
-  long getUserId();
+  java.lang.String getUserId();
+  /**
+   * <code>string userId = 1;</code>
+   */
+  com.google.protobuf.ByteString
+      getUserIdBytes();
 
   /**
    * <code>string content = 2;</code>
