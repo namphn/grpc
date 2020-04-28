@@ -5,12 +5,14 @@ option java_package = "web.service.grpc.user";
 
 message RegistrationRequestGrpc{
     string email = 1;
-    string password = 3;
+    string password = 2;
+    string firstName = 3;
+    string lastName = 4;
+    bool sex = 5;
 }
 message RegistrationResponseGrpc{
     string email = 1;
-    string password = 2;
-    string status = 3;
+    string status = 2;
 }
 message ConfirmEmailRequest{
     string token = 1;

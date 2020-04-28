@@ -18,21 +18,11 @@ public interface RegistrationResponseGrpcOrBuilder extends
       getEmailBytes();
 
   /**
-   * <code>string password = 2;</code>
-   */
-  java.lang.String getPassword();
-  /**
-   * <code>string password = 2;</code>
-   */
-  com.google.protobuf.ByteString
-      getPasswordBytes();
-
-  /**
-   * <code>string status = 3;</code>
+   * <code>string status = 2;</code>
    */
   java.lang.String getStatus();
   /**
-   * <code>string status = 3;</code>
+   * <code>string status = 2;</code>
    */
   com.google.protobuf.ByteString
       getStatusBytes();

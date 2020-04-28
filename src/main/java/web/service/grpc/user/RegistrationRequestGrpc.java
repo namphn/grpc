@@ -18,6 +18,9 @@ private static final long serialVersionUID = 0L;
   private RegistrationRequestGrpc() {
     email_ = "";
     password_ = "";
+    firstName_ = "";
+    lastName_ = "";
+    sex_ = false;
   }
 
   @java.lang.Override
@@ -57,10 +60,27 @@ private static final long serialVersionUID = 0L;
             email_ = s;
             break;
           }
-          case 26: {
+          case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
             password_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            firstName_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            lastName_ = s;
+            break;
+          }
+          case 40: {
+
+            sex_ = input.readBool();
             break;
           }
         }
@@ -121,10 +141,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PASSWORD_FIELD_NUMBER = 3;
+  public static final int PASSWORD_FIELD_NUMBER = 2;
   private volatile java.lang.Object password_;
   /**
-   * <code>string password = 3;</code>
+   * <code>string password = 2;</code>
    */
   public java.lang.String getPassword() {
     java.lang.Object ref = password_;
@@ -139,7 +159,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string password = 3;</code>
+   * <code>string password = 2;</code>
    */
   public com.google.protobuf.ByteString
       getPasswordBytes() {
@@ -153,6 +173,83 @@ private static final long serialVersionUID = 0L;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int FIRSTNAME_FIELD_NUMBER = 3;
+  private volatile java.lang.Object firstName_;
+  /**
+   * <code>string firstName = 3;</code>
+   */
+  public java.lang.String getFirstName() {
+    java.lang.Object ref = firstName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      firstName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string firstName = 3;</code>
+   */
+  public com.google.protobuf.ByteString
+      getFirstNameBytes() {
+    java.lang.Object ref = firstName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      firstName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int LASTNAME_FIELD_NUMBER = 4;
+  private volatile java.lang.Object lastName_;
+  /**
+   * <code>string lastName = 4;</code>
+   */
+  public java.lang.String getLastName() {
+    java.lang.Object ref = lastName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      lastName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string lastName = 4;</code>
+   */
+  public com.google.protobuf.ByteString
+      getLastNameBytes() {
+    java.lang.Object ref = lastName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      lastName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SEX_FIELD_NUMBER = 5;
+  private boolean sex_;
+  /**
+   * <code>bool sex = 5;</code>
+   */
+  public boolean getSex() {
+    return sex_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -171,7 +268,16 @@ private static final long serialVersionUID = 0L;
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
     }
     if (!getPasswordBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, password_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, password_);
+    }
+    if (!getFirstNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, firstName_);
+    }
+    if (!getLastNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, lastName_);
+    }
+    if (sex_ != false) {
+      output.writeBool(5, sex_);
     }
     unknownFields.writeTo(output);
   }
@@ -185,7 +291,17 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
     }
     if (!getPasswordBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, password_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, password_);
+    }
+    if (!getFirstNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, firstName_);
+    }
+    if (!getLastNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, lastName_);
+    }
+    if (sex_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(5, sex_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -207,6 +323,12 @@ private static final long serialVersionUID = 0L;
         .equals(other.getEmail());
     result = result && getPassword()
         .equals(other.getPassword());
+    result = result && getFirstName()
+        .equals(other.getFirstName());
+    result = result && getLastName()
+        .equals(other.getLastName());
+    result = result && (getSex()
+        == other.getSex());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -222,6 +344,13 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getEmail().hashCode();
     hash = (37 * hash) + PASSWORD_FIELD_NUMBER;
     hash = (53 * hash) + getPassword().hashCode();
+    hash = (37 * hash) + FIRSTNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getFirstName().hashCode();
+    hash = (37 * hash) + LASTNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getLastName().hashCode();
+    hash = (37 * hash) + SEX_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getSex());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -355,6 +484,12 @@ private static final long serialVersionUID = 0L;
 
       password_ = "";
 
+      firstName_ = "";
+
+      lastName_ = "";
+
+      sex_ = false;
+
       return this;
     }
 
@@ -379,6 +514,9 @@ private static final long serialVersionUID = 0L;
       web.service.grpc.user.RegistrationRequestGrpc result = new web.service.grpc.user.RegistrationRequestGrpc(this);
       result.email_ = email_;
       result.password_ = password_;
+      result.firstName_ = firstName_;
+      result.lastName_ = lastName_;
+      result.sex_ = sex_;
       onBuilt();
       return result;
     }
@@ -427,6 +565,17 @@ private static final long serialVersionUID = 0L;
       if (!other.getPassword().isEmpty()) {
         password_ = other.password_;
         onChanged();
+      }
+      if (!other.getFirstName().isEmpty()) {
+        firstName_ = other.firstName_;
+        onChanged();
+      }
+      if (!other.getLastName().isEmpty()) {
+        lastName_ = other.lastName_;
+        onChanged();
+      }
+      if (other.getSex() != false) {
+        setSex(other.getSex());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -526,7 +675,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object password_ = "";
     /**
-     * <code>string password = 3;</code>
+     * <code>string password = 2;</code>
      */
     public java.lang.String getPassword() {
       java.lang.Object ref = password_;
@@ -541,7 +690,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string password = 3;</code>
+     * <code>string password = 2;</code>
      */
     public com.google.protobuf.ByteString
         getPasswordBytes() {
@@ -557,7 +706,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string password = 3;</code>
+     * <code>string password = 2;</code>
      */
     public Builder setPassword(
         java.lang.String value) {
@@ -570,7 +719,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string password = 3;</code>
+     * <code>string password = 2;</code>
      */
     public Builder clearPassword() {
       
@@ -579,7 +728,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string password = 3;</code>
+     * <code>string password = 2;</code>
      */
     public Builder setPasswordBytes(
         com.google.protobuf.ByteString value) {
@@ -589,6 +738,170 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       password_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object firstName_ = "";
+    /**
+     * <code>string firstName = 3;</code>
+     */
+    public java.lang.String getFirstName() {
+      java.lang.Object ref = firstName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        firstName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string firstName = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getFirstNameBytes() {
+      java.lang.Object ref = firstName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        firstName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string firstName = 3;</code>
+     */
+    public Builder setFirstName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      firstName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string firstName = 3;</code>
+     */
+    public Builder clearFirstName() {
+      
+      firstName_ = getDefaultInstance().getFirstName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string firstName = 3;</code>
+     */
+    public Builder setFirstNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      firstName_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object lastName_ = "";
+    /**
+     * <code>string lastName = 4;</code>
+     */
+    public java.lang.String getLastName() {
+      java.lang.Object ref = lastName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        lastName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string lastName = 4;</code>
+     */
+    public com.google.protobuf.ByteString
+        getLastNameBytes() {
+      java.lang.Object ref = lastName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        lastName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string lastName = 4;</code>
+     */
+    public Builder setLastName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      lastName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string lastName = 4;</code>
+     */
+    public Builder clearLastName() {
+      
+      lastName_ = getDefaultInstance().getLastName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string lastName = 4;</code>
+     */
+    public Builder setLastNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      lastName_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean sex_ ;
+    /**
+     * <code>bool sex = 5;</code>
+     */
+    public boolean getSex() {
+      return sex_;
+    }
+    /**
+     * <code>bool sex = 5;</code>
+     */
+    public Builder setSex(boolean value) {
+      
+      sex_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool sex = 5;</code>
+     */
+    public Builder clearSex() {
+      
+      sex_ = false;
       onChanged();
       return this;
     }
