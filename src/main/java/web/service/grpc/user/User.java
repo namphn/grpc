@@ -104,6 +104,21 @@ public final class User {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ValidateTokenResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetAllUserRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetAllUserRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetAllUserResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetAllUserResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_GetAllUserResponse_UserGrpcModel_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_GetAllUserResponse_UserGrpcModel_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -126,37 +141,43 @@ public final class User {
       "est\022\r\n\005email\030\001 \001(\t\022\020\n\010userName\030\002 \001(\t\022\r\n\005" +
       "phone\030\003 \001(\t\"1\n\037RegistrationInformationRe" +
       "sponse\022\016\n\006status\030\001 \001(\t\"/\n\014LoginRequest\022\r" +
-      "\n\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\".\n\rLogin" +
-      "Response\022\016\n\006status\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\"" +
-      "T\n\022NewPasswordRequest\022\r\n\005token\030\001 \001(\t\022\023\n\013" +
-      "newPassword\030\002 \001(\t\022\032\n\022newPasswordConfirm\030" +
-      "\003 \001(\t\"4\n\023NewPasswordResponse\022\r\n\005email\030\001 " +
-      "\001(\t\022\016\n\006status\030\002 \001(\t\"6\n%VerificationReset" +
-      "PasswordTokenRequest\022\r\n\005token\030\001 \001(\t\"G\n&V" +
-      "erificationResetPasswordTokenResponse\022\r\n" +
-      "\005email\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\" \n\017GetEmail" +
-      "Request\022\r\n\005token\030\001 \001(\t\"!\n\020GetEmailRespon" +
-      "se\022\r\n\005email\030\001 \001(\t\"4\n\024ValidateTokenReques" +
-      "t\022\r\n\005email\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\"\'\n\025Valid" +
-      "ateTokenResponse\022\016\n\006status\030\001 \001(\0102\220\005\n\013Use" +
-      "rService\022C\n\014Registration\022\030.RegistrationR" +
-      "equestGrpc\032\031.RegistrationResponseGrpc\022&\n" +
-      "\005Login\022\r.LoginRequest\032\016.LoginResponse\022L\n" +
-      "\035VerificationTokenRegistration\022\024.Confirm" +
-      "EmailRequest\032\025.ConfirmEmailResponse\022?\n\016P" +
-      "asswordForgot\022\025.PasswordResetRequest\032\026.P" +
-      "asswordResetResponse\022:\n\rPasswordReset\022\023." +
-      "NewPasswordRequest\032\024.NewPasswordResponse" +
-      "\022\\\n\027RegistrationInformation\022\037.Registrati" +
-      "onInformationRequest\032 .RegistrationInfor" +
-      "mationResponse\022q\n\036VerificationResetPassw" +
-      "ordToken\022&.VerificationResetPasswordToke" +
-      "nRequest\032\'.VerificationResetPasswordToke" +
-      "nResponse\0228\n\021GetEmailFromToken\022\020.GetEmai" +
-      "lRequest\032\021.GetEmailResponse\022>\n\rValidateT" +
-      "oken\022\025.ValidateTokenRequest\032\026.ValidateTo" +
-      "kenResponseB\034\n\025web.service.grpc.userP\001\210\001" +
-      "\001b\006proto3"
+      "\n\005email\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\"@\n\rLogin" +
+      "Response\022\016\n\006status\030\001 \001(\t\022\r\n\005token\030\002 \001(\t\022" +
+      "\020\n\010username\030\003 \001(\t\"T\n\022NewPasswordRequest\022" +
+      "\r\n\005token\030\001 \001(\t\022\023\n\013newPassword\030\002 \001(\t\022\032\n\022n" +
+      "ewPasswordConfirm\030\003 \001(\t\"4\n\023NewPasswordRe" +
+      "sponse\022\r\n\005email\030\001 \001(\t\022\016\n\006status\030\002 \001(\t\"6\n" +
+      "%VerificationResetPasswordTokenRequest\022\r" +
+      "\n\005token\030\001 \001(\t\"G\n&VerificationResetPasswo" +
+      "rdTokenResponse\022\r\n\005email\030\001 \001(\t\022\016\n\006status" +
+      "\030\002 \001(\t\" \n\017GetEmailRequest\022\r\n\005token\030\001 \001(\t" +
+      "\"!\n\020GetEmailResponse\022\r\n\005email\030\001 \001(\t\"4\n\024V" +
+      "alidateTokenRequest\022\r\n\005email\030\001 \001(\t\022\r\n\005to" +
+      "ken\030\002 \001(\t\"\'\n\025ValidateTokenResponse\022\016\n\006st" +
+      "atus\030\001 \001(\010\"!\n\021GetAllUserRequest\022\014\n\004page\030" +
+      "\001 \001(\005\"\212\001\n\022GetAllUserResponse\0222\n\007allUser\030" +
+      "\001 \003(\0132!.GetAllUserResponse.UserGrpcModel" +
+      "\032@\n\rUserGrpcModel\022\n\n\002id\030\001 \001(\t\022\021\n\tfirstNa" +
+      "me\030\002 \001(\t\022\020\n\010lastName\030\003 \001(\t2\307\005\n\013UserServi" +
+      "ce\022C\n\014Registration\022\030.RegistrationRequest" +
+      "Grpc\032\031.RegistrationResponseGrpc\022&\n\005Login" +
+      "\022\r.LoginRequest\032\016.LoginResponse\022L\n\035Verif" +
+      "icationTokenRegistration\022\024.ConfirmEmailR" +
+      "equest\032\025.ConfirmEmailResponse\022?\n\016Passwor" +
+      "dForgot\022\025.PasswordResetRequest\032\026.Passwor" +
+      "dResetResponse\022:\n\rPasswordReset\022\023.NewPas" +
+      "swordRequest\032\024.NewPasswordResponse\022\\\n\027Re" +
+      "gistrationInformation\022\037.RegistrationInfo" +
+      "rmationRequest\032 .RegistrationInformation" +
+      "Response\022q\n\036VerificationResetPasswordTok" +
+      "en\022&.VerificationResetPasswordTokenReque" +
+      "st\032\'.VerificationResetPasswordTokenRespo" +
+      "nse\0228\n\021GetEmailFromToken\022\020.GetEmailReque" +
+      "st\032\021.GetEmailResponse\022>\n\rValidateToken\022\025" +
+      ".ValidateTokenRequest\032\026.ValidateTokenRes" +
+      "ponse\0225\n\nGetAllUser\022\022.GetAllUserRequest\032" +
+      "\023.GetAllUserResponseB\034\n\025web.service.grpc" +
+      ".userP\001\210\001\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -229,7 +250,7 @@ public final class User {
     internal_static_LoginResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LoginResponse_descriptor,
-        new java.lang.String[] { "Status", "Token", });
+        new java.lang.String[] { "Status", "Token", "Username", });
     internal_static_NewPasswordRequest_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_NewPasswordRequest_fieldAccessorTable = new
@@ -278,6 +299,24 @@ public final class User {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ValidateTokenResponse_descriptor,
         new java.lang.String[] { "Status", });
+    internal_static_GetAllUserRequest_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_GetAllUserRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetAllUserRequest_descriptor,
+        new java.lang.String[] { "Page", });
+    internal_static_GetAllUserResponse_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_GetAllUserResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetAllUserResponse_descriptor,
+        new java.lang.String[] { "AllUser", });
+    internal_static_GetAllUserResponse_UserGrpcModel_descriptor =
+      internal_static_GetAllUserResponse_descriptor.getNestedTypes().get(0);
+    internal_static_GetAllUserResponse_UserGrpcModel_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_GetAllUserResponse_UserGrpcModel_descriptor,
+        new java.lang.String[] { "Id", "FirstName", "LastName", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

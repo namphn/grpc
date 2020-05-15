@@ -315,6 +315,38 @@ public final class UserServiceGrpc {
      return getValidateTokenMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<web.service.grpc.user.GetAllUserRequest,
+      web.service.grpc.user.GetAllUserResponse> getGetAllUserMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllUser",
+      requestType = web.service.grpc.user.GetAllUserRequest.class,
+      responseType = web.service.grpc.user.GetAllUserResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<web.service.grpc.user.GetAllUserRequest,
+      web.service.grpc.user.GetAllUserResponse> getGetAllUserMethod() {
+    io.grpc.MethodDescriptor<web.service.grpc.user.GetAllUserRequest, web.service.grpc.user.GetAllUserResponse> getGetAllUserMethod;
+    if ((getGetAllUserMethod = UserServiceGrpc.getGetAllUserMethod) == null) {
+      synchronized (UserServiceGrpc.class) {
+        if ((getGetAllUserMethod = UserServiceGrpc.getGetAllUserMethod) == null) {
+          UserServiceGrpc.getGetAllUserMethod = getGetAllUserMethod = 
+              io.grpc.MethodDescriptor.<web.service.grpc.user.GetAllUserRequest, web.service.grpc.user.GetAllUserResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(
+                  "UserService", "GetAllUser"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.grpc.user.GetAllUserRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  web.service.grpc.user.GetAllUserResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("GetAllUser"))
+                  .build();
+          }
+        }
+     }
+     return getGetAllUserMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -432,6 +464,16 @@ public final class UserServiceGrpc {
       asyncUnimplementedUnaryCall(getValidateTokenMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     * get all user
+     * </pre>
+     */
+    public void getAllUser(web.service.grpc.user.GetAllUserRequest request,
+        io.grpc.stub.StreamObserver<web.service.grpc.user.GetAllUserResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getGetAllUserMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -497,6 +539,13 @@ public final class UserServiceGrpc {
                 web.service.grpc.user.ValidateTokenRequest,
                 web.service.grpc.user.ValidateTokenResponse>(
                   this, METHODID_VALIDATE_TOKEN)))
+          .addMethod(
+            getGetAllUserMethod(),
+            asyncUnaryCall(
+              new MethodHandlers<
+                web.service.grpc.user.GetAllUserRequest,
+                web.service.grpc.user.GetAllUserResponse>(
+                  this, METHODID_GET_ALL_USER)))
           .build();
     }
   }
@@ -617,6 +666,17 @@ public final class UserServiceGrpc {
       asyncUnaryCall(
           getChannel().newCall(getValidateTokenMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * get all user
+     * </pre>
+     */
+    public void getAllUser(web.service.grpc.user.GetAllUserRequest request,
+        io.grpc.stub.StreamObserver<web.service.grpc.user.GetAllUserResponse> responseObserver) {
+      asyncUnaryCall(
+          getChannel().newCall(getGetAllUserMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -725,6 +785,16 @@ public final class UserServiceGrpc {
     public web.service.grpc.user.ValidateTokenResponse validateToken(web.service.grpc.user.ValidateTokenRequest request) {
       return blockingUnaryCall(
           getChannel(), getValidateTokenMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * get all user
+     * </pre>
+     */
+    public web.service.grpc.user.GetAllUserResponse getAllUser(web.service.grpc.user.GetAllUserRequest request) {
+      return blockingUnaryCall(
+          getChannel(), getGetAllUserMethod(), getCallOptions(), request);
     }
   }
 
@@ -844,6 +914,17 @@ public final class UserServiceGrpc {
       return futureUnaryCall(
           getChannel().newCall(getValidateTokenMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * get all user
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<web.service.grpc.user.GetAllUserResponse> getAllUser(
+        web.service.grpc.user.GetAllUserRequest request) {
+      return futureUnaryCall(
+          getChannel().newCall(getGetAllUserMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_REGISTRATION = 0;
@@ -855,6 +936,7 @@ public final class UserServiceGrpc {
   private static final int METHODID_VERIFICATION_RESET_PASSWORD_TOKEN = 6;
   private static final int METHODID_GET_EMAIL_FROM_TOKEN = 7;
   private static final int METHODID_VALIDATE_TOKEN = 8;
+  private static final int METHODID_GET_ALL_USER = 9;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -908,6 +990,10 @@ public final class UserServiceGrpc {
         case METHODID_VALIDATE_TOKEN:
           serviceImpl.validateToken((web.service.grpc.user.ValidateTokenRequest) request,
               (io.grpc.stub.StreamObserver<web.service.grpc.user.ValidateTokenResponse>) responseObserver);
+          break;
+        case METHODID_GET_ALL_USER:
+          serviceImpl.getAllUser((web.service.grpc.user.GetAllUserRequest) request,
+              (io.grpc.stub.StreamObserver<web.service.grpc.user.GetAllUserResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -979,6 +1065,7 @@ public final class UserServiceGrpc {
               .addMethod(getVerificationResetPasswordTokenMethod())
               .addMethod(getGetEmailFromTokenMethod())
               .addMethod(getValidateTokenMethod())
+              .addMethod(getGetAllUserMethod())
               .build();
         }
       }

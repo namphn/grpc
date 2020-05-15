@@ -18,6 +18,7 @@ private static final long serialVersionUID = 0L;
   private LoginResponse() {
     status_ = "";
     token_ = "";
+    username_ = "";
   }
 
   @java.lang.Override
@@ -61,6 +62,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             token_ = s;
+            break;
+          }
+          case 26: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            username_ = s;
             break;
           }
         }
@@ -155,6 +162,40 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int USERNAME_FIELD_NUMBER = 3;
+  private volatile java.lang.Object username_;
+  /**
+   * <code>string username = 3;</code>
+   */
+  public java.lang.String getUsername() {
+    java.lang.Object ref = username_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      username_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string username = 3;</code>
+   */
+  public com.google.protobuf.ByteString
+      getUsernameBytes() {
+    java.lang.Object ref = username_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      username_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -173,6 +214,9 @@ private static final long serialVersionUID = 0L;
     if (!getTokenBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, token_);
     }
+    if (!getUsernameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, username_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -186,6 +230,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getTokenBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, token_);
+    }
+    if (!getUsernameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, username_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -207,6 +254,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getStatus());
     result = result && getToken()
         .equals(other.getToken());
+    result = result && getUsername()
+        .equals(other.getUsername());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -222,6 +271,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getStatus().hashCode();
     hash = (37 * hash) + TOKEN_FIELD_NUMBER;
     hash = (53 * hash) + getToken().hashCode();
+    hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getUsername().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -355,6 +406,8 @@ private static final long serialVersionUID = 0L;
 
       token_ = "";
 
+      username_ = "";
+
       return this;
     }
 
@@ -379,6 +432,7 @@ private static final long serialVersionUID = 0L;
       web.service.grpc.user.LoginResponse result = new web.service.grpc.user.LoginResponse(this);
       result.status_ = status_;
       result.token_ = token_;
+      result.username_ = username_;
       onBuilt();
       return result;
     }
@@ -426,6 +480,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getToken().isEmpty()) {
         token_ = other.token_;
+        onChanged();
+      }
+      if (!other.getUsername().isEmpty()) {
+        username_ = other.username_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -589,6 +647,75 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       token_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object username_ = "";
+    /**
+     * <code>string username = 3;</code>
+     */
+    public java.lang.String getUsername() {
+      java.lang.Object ref = username_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        username_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string username = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getUsernameBytes() {
+      java.lang.Object ref = username_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        username_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string username = 3;</code>
+     */
+    public Builder setUsername(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      username_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string username = 3;</code>
+     */
+    public Builder clearUsername() {
+      
+      username_ = getDefaultInstance().getUsername();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string username = 3;</code>
+     */
+    public Builder setUsernameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      username_ = value;
       onChanged();
       return this;
     }

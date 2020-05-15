@@ -119,6 +119,18 @@ public  abstract class UserService
         web.service.grpc.user.ValidateTokenRequest request,
         com.google.protobuf.RpcCallback<web.service.grpc.user.ValidateTokenResponse> done);
 
+    /**
+     * <pre>
+     * get all user
+     * </pre>
+     *
+     * <code>rpc GetAllUser(.GetAllUserRequest) returns (.GetAllUserResponse);</code>
+     */
+    public abstract void getAllUser(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.user.GetAllUserRequest request,
+        com.google.protobuf.RpcCallback<web.service.grpc.user.GetAllUserResponse> done);
+
   }
 
   public static com.google.protobuf.Service newReflectiveService(
@@ -196,6 +208,14 @@ public  abstract class UserService
         impl.validateToken(controller, request, done);
       }
 
+      @java.lang.Override
+      public  void getAllUser(
+          com.google.protobuf.RpcController controller,
+          web.service.grpc.user.GetAllUserRequest request,
+          com.google.protobuf.RpcCallback<web.service.grpc.user.GetAllUserResponse> done) {
+        impl.getAllUser(controller, request, done);
+      }
+
     };
   }
 
@@ -236,6 +256,8 @@ public  abstract class UserService
             return impl.getEmailFromToken(controller, (web.service.grpc.user.GetEmailRequest)request);
           case 8:
             return impl.validateToken(controller, (web.service.grpc.user.ValidateTokenRequest)request);
+          case 9:
+            return impl.getAllUser(controller, (web.service.grpc.user.GetAllUserRequest)request);
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -268,6 +290,8 @@ public  abstract class UserService
             return web.service.grpc.user.GetEmailRequest.getDefaultInstance();
           case 8:
             return web.service.grpc.user.ValidateTokenRequest.getDefaultInstance();
+          case 9:
+            return web.service.grpc.user.GetAllUserRequest.getDefaultInstance();
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -300,6 +324,8 @@ public  abstract class UserService
             return web.service.grpc.user.GetEmailResponse.getDefaultInstance();
           case 8:
             return web.service.grpc.user.ValidateTokenResponse.getDefaultInstance();
+          case 9:
+            return web.service.grpc.user.GetAllUserResponse.getDefaultInstance();
           default:
             throw new java.lang.AssertionError("Can't get here.");
         }
@@ -416,6 +442,18 @@ public  abstract class UserService
       web.service.grpc.user.ValidateTokenRequest request,
       com.google.protobuf.RpcCallback<web.service.grpc.user.ValidateTokenResponse> done);
 
+  /**
+   * <pre>
+   * get all user
+   * </pre>
+   *
+   * <code>rpc GetAllUser(.GetAllUserRequest) returns (.GetAllUserResponse);</code>
+   */
+  public abstract void getAllUser(
+      com.google.protobuf.RpcController controller,
+      web.service.grpc.user.GetAllUserRequest request,
+      com.google.protobuf.RpcCallback<web.service.grpc.user.GetAllUserResponse> done);
+
   public static final
       com.google.protobuf.Descriptors.ServiceDescriptor
       getDescriptor() {
@@ -483,6 +521,11 @@ public  abstract class UserService
           com.google.protobuf.RpcUtil.<web.service.grpc.user.ValidateTokenResponse>specializeCallback(
             done));
         return;
+      case 9:
+        this.getAllUser(controller, (web.service.grpc.user.GetAllUserRequest)request,
+          com.google.protobuf.RpcUtil.<web.service.grpc.user.GetAllUserResponse>specializeCallback(
+            done));
+        return;
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -515,6 +558,8 @@ public  abstract class UserService
         return web.service.grpc.user.GetEmailRequest.getDefaultInstance();
       case 8:
         return web.service.grpc.user.ValidateTokenRequest.getDefaultInstance();
+      case 9:
+        return web.service.grpc.user.GetAllUserRequest.getDefaultInstance();
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -547,6 +592,8 @@ public  abstract class UserService
         return web.service.grpc.user.GetEmailResponse.getDefaultInstance();
       case 8:
         return web.service.grpc.user.ValidateTokenResponse.getDefaultInstance();
+      case 9:
+        return web.service.grpc.user.GetAllUserResponse.getDefaultInstance();
       default:
         throw new java.lang.AssertionError("Can't get here.");
     }
@@ -702,6 +749,21 @@ public  abstract class UserService
           web.service.grpc.user.ValidateTokenResponse.class,
           web.service.grpc.user.ValidateTokenResponse.getDefaultInstance()));
     }
+
+    public  void getAllUser(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.user.GetAllUserRequest request,
+        com.google.protobuf.RpcCallback<web.service.grpc.user.GetAllUserResponse> done) {
+      channel.callMethod(
+        getDescriptor().getMethods().get(9),
+        controller,
+        request,
+        web.service.grpc.user.GetAllUserResponse.getDefaultInstance(),
+        com.google.protobuf.RpcUtil.generalizeCallback(
+          done,
+          web.service.grpc.user.GetAllUserResponse.class,
+          web.service.grpc.user.GetAllUserResponse.getDefaultInstance()));
+    }
   }
 
   public static BlockingInterface newBlockingStub(
@@ -753,6 +815,11 @@ public  abstract class UserService
     public web.service.grpc.user.ValidateTokenResponse validateToken(
         com.google.protobuf.RpcController controller,
         web.service.grpc.user.ValidateTokenRequest request)
+        throws com.google.protobuf.ServiceException;
+
+    public web.service.grpc.user.GetAllUserResponse getAllUser(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.user.GetAllUserRequest request)
         throws com.google.protobuf.ServiceException;
   }
 
@@ -868,6 +935,18 @@ public  abstract class UserService
         controller,
         request,
         web.service.grpc.user.ValidateTokenResponse.getDefaultInstance());
+    }
+
+
+    public web.service.grpc.user.GetAllUserResponse getAllUser(
+        com.google.protobuf.RpcController controller,
+        web.service.grpc.user.GetAllUserRequest request)
+        throws com.google.protobuf.ServiceException {
+      return (web.service.grpc.user.GetAllUserResponse) channel.callBlockingMethod(
+        getDescriptor().getMethods().get(9),
+        controller,
+        request,
+        web.service.grpc.user.GetAllUserResponse.getDefaultInstance());
     }
 
   }
