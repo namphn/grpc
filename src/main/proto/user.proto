@@ -43,7 +43,8 @@ message LoginRequest{
 message LoginResponse{
     string status = 1;
     string token = 2;
-    string username= 3;
+    string username = 3;
+    string userId = 4;
 }
 
 message NewPasswordRequest{

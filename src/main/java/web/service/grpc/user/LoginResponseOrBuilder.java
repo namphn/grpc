@@ -36,4 +36,14 @@ public interface LoginResponseOrBuilder extends
    */
   com.google.protobuf.ByteString
       getUsernameBytes();
+
+  /**
+   * <code>string userId = 4;</code>
+   */
+  java.lang.String getUserId();
+  /**
+   * <code>string userId = 4;</code>
+   */
+  com.google.protobuf.ByteString
+      getUserIdBytes();
 }
